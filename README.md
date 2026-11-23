@@ -1,6 +1,6 @@
 # Virtual Pipe Organ
 
-A free browser pipe organ laid out as a real console: two stop jambs with 240+ drawknobs between them, 5 manuals with thumb pistons, expression shoes, a crescendo pedal, toe studs and a 32-note pedalboard. It also has couplers, tremulants, 8 piston memory levels, rooms, temperaments and Web MIDI.
+A free browser pipe organ laid out as a real console: two stop jambs with 240+ drawknobs between them, 5 manuals with thumb pistons, expression shoes, a crescendo pedal, toe studs and a 32-note pedalboard. It also has couplers, tremulants, 8 piston memory levels, rooms, temperaments, WAV recording, Web MIDI and a hymn trainer.
 
 **Play:** https://virtualpipeorgan.github.io/organ/
 
@@ -11,17 +11,21 @@ Single file (`index.html`), no dependencies. MIDI has three modes, set in Settin
 
 Controllers: CC11 expression, CC64 sustain, CC7 volume, CC123 all notes off (that channel only); program change 0–9 selects generals.
 
-## Monetising (owner)
-Edit the `SHOP` block near the start of the UI script in `index.html`:
-- `support`: a donation link (Ko-fi, Buy Me a Coffee, GitHub Sponsors, PayPal.me). It shows a ♥ Support button.
-- `buy`: the Lemon Squeezy (or Gumroad) checkout for Pro, priced at US$12 once. Until `buy` is set, Pro features stay unlocked for everyone.
-- `site`: an optional second checkout for a church/site licence, priced at US$39. It uses the same code.
-- Put the unlock code in each product's receipt or thank-you text, so it is delivered automatically.
-- `codes`: SHA-256 hashes of the unlock codes. The first one is already in. Rotate the code each major release and keep the old hashes, so earlier buyers stay unlocked. Hash a code with
-  `node -e "console.log(require('crypto').createHash('sha256').update('YOUR-CODE').digest('hex'))"`.
-  With an empty list, any code of 6 or more characters unlocks.
+## Hymn trainer
+Pick a hymn on the music desk:
+- **Listen:** the organ plays the melody on the Great.
+- **Learn:** each note falls onto its key and waits for you.
+- **Play:** notes keep time and are scored Perfect, Good or Miss, with a streak counter, 1–3 stars and a saved best score.
 
-Pro adds WAV recording, piston memory levels 2–8, and saving/loading registration files. Everything else stays free.
+You can play the tunes on any manual or on MIDI. On phones the keyboard follows the melody, and all manuals slide together from the grip rail.
+
+The melodies are public-domain tunes taken from the MusicXML scores on [Hymnary.org](https://hymnary.org/). Only the melody is used, not any hymnal's harmonisation.
+
+## Pro and payments (owner)
+- Pro is sold through Stripe Payment Links, with Stripe as merchant of record. The products are Pro at US$12 once, Pro at US$3 a month, and a church licence at US$39.
+- The links live in the `SHOP` block at the start of the UI script. Stripe's confirmation page shows the unlock code.
+- `codes` holds SHA-256 hashes of the unlock codes. Rotate the code each major release, and keep the old hashes so earlier buyers stay unlocked.
+- Pro adds piston memory levels 2–8 and saving/loading registration files. Recording and everything else stay free.
 
 Unlocking happens in the browser, and the source is public, so it works on the honour system.
 

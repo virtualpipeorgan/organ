@@ -1,11 +1,11 @@
 <!doctype html><html lang=en><head><meta charset=utf-8>
 <link rel=icon href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23241509'/%3E%3Cg fill='%23d9a441'%3E%3Crect x='10' y='22' width='7' height='34' rx='3'/%3E%3Crect x='20' y='12' width='7' height='44' rx='3'/%3E%3Crect x='30' y='6' width='7' height='50' rx='3'/%3E%3Crect x='40' y='12' width='7' height='44' rx='3'/%3E%3Crect x='50' y='22' width='7' height='34' rx='3'/%3E%3C/g%3E%3C/svg%3E">
 <link rel=manifest href=manifest.webmanifest><link rel=apple-touch-icon href=icon.svg><meta name=viewport content="width=device-width,initial-scale=1"><meta name=theme-color content="#1a0f07">
-<title>Virtual Pipe Organ – Free Online Pipe Organ Simulator with 240+ Stops, 5 Manuals &amp; Pedalboard</title>
-<meta name=description content="Play a free virtual pipe organ in your browser: a realistic console with 5 manuals, 32-note pedalboard, 240+ stops, couplers, swell shoes, crescendo, tremulants, reverb, historic temperaments and MIDI. No download.">
+<title>Virtual Pipe Organ – Free Online Organ: 5 Manuals, Pedalboard, 240+ Stops</title>
+<meta name=description content="Play a free pipe organ in your browser, on computer, phone or tablet: 5 manuals, a 32-note pedalboard, 240+ stops with seven 32′ pedal stops, couplers, memory pistons, hymn tutorials, WAV recording and MIDI. Nothing to download.">
 <meta name=keywords content="virtual pipe organ, online organ, pipe organ simulator, church organ, organ stops, pedalboard, Web MIDI organ, Bach organ, Cavaillé-Coll, Schnitger, swell pedal, crescendo pedal, couplers, free organ">
-<meta property=og:title content="Virtual Pipe Organ – play a 240+ stop pipe organ online"><meta property=og:description content="A full organ console in your browser: 5 manuals, pedalboard, drawknobs, pistons, swell shoes, crescendo, MIDI. Free."><meta name="msvalidate.01" content="CFBB86C541D579AFA7B9067668D3ED02"><meta property=og:type content=website><link rel=canonical href=https://virtualpipeorgan.github.io/organ/><meta property=og:url content=https://virtualpipeorgan.github.io/organ/><meta property=og:image content=https://virtualpipeorgan.github.io/organ/og.jpg><meta property=og:image:width content=1200><meta property=og:image:height content=630><meta property=og:image:alt content="The Virtual Pipe Organ console: stop jambs, stacked manuals and pedalboard"><meta name=twitter:card content=summary_large_image><meta name=twitter:image content=https://virtualpipeorgan.github.io/organ/og.jpg>
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"WebApplication","name":"Virtual Pipe Organ","url":"https://virtualpipeorgan.github.io/organ/","applicationCategory":"MusicApplication","operatingSystem":"Any (web browser)","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Free browser pipe organ console with 5 manuals, 32-note pedalboard, 240+ stops, couplers, swell shoes, crescendo and MIDI input."}</script>
+<meta property=og:title content="Virtual Pipe Organ – play a 240+ stop pipe organ online"><meta property=og:description content="A full five-manual organ console in your browser, iPhone included: 240+ stops, 32′ pedal, pistons, hymn tutorials, recording, MIDI. Free."><meta name="msvalidate.01" content="CFBB86C541D579AFA7B9067668D3ED02"><meta property=og:type content=website><link rel=canonical href=https://virtualpipeorgan.github.io/organ/><meta property=og:url content=https://virtualpipeorgan.github.io/organ/><meta property=og:image content=https://virtualpipeorgan.github.io/organ/og.jpg><meta property=og:image:width content=1200><meta property=og:image:height content=630><meta property=og:image:alt content="The Virtual Pipe Organ console: stop jambs, stacked manuals and pedalboard"><meta name=twitter:card content=summary_large_image><meta name=twitter:image content=https://virtualpipeorgan.github.io/organ/og.jpg>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"WebApplication","name":"Virtual Pipe Organ","url":"https://virtualpipeorgan.github.io/organ/","applicationCategory":"MusicApplication","operatingSystem":"Any (web browser)","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Free browser pipe organ console with 5 manuals, 32-note pedalboard, 240+ stops, couplers, memory pistons, hymn tutorials, WAV recording and MIDI input."}</script>
 <style>
 :root{--wood:#2a170b;--wood2:#3a2212;--gold:#d9a441;--ivory:#f3ead3;--ink:#ddd}
 *{box-sizing:border-box}[hidden]{display:none!important}
@@ -44,6 +44,7 @@ body.small .k{width:46px;height:46px}body.small .k b{font-size:6.6px}body.small 
 #lcd button{font:11px ui-monospace,monospace;padding:0 6px;background:#132013;border-color:#2e4a2e;color:#8fd18f}
 #now{color:var(--gold);min-height:1.35em;font-size:13px;margin-top:3px}#hint{color:#998;font-size:11px;min-height:1.2em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #st{color:#6a9a6a;font:11px ui-monospace,monospace}
+.w.nx,.b.nx{box-shadow:inset 0 -18px 0 #39b3ff,0 0 10px #39b3ff;animation:nx 1s ease-in-out infinite alternate}@keyframes nx{to{box-shadow:inset 0 -18px 0 #8fd6ff,0 0 16px #8fd6ff}}@media (prefers-reduced-motion:reduce){.w.nx,.b.nx{animation:none}}#hysel{max-width:190px}@media (pointer:coarse){.rail{height:22px;background:repeating-linear-gradient(90deg,#2a190b 0 10px,#3a2410 10px 20px);border-top:1px solid #5a3a18}.rail::after{content:'⇆ drag here to slide the keyboards';position:sticky;left:8px;display:inline-block;font:11px/22px system-ui,sans-serif;color:#e0c48c;padding-left:8px}}#hyc{display:block;width:100%;height:150px;background:linear-gradient(#0b0f18,#121a29);border-radius:6px;margin:4px 0}.stars{font-size:34px;color:#ffd36b;margin:4px 0;letter-spacing:4px}
 #deskc{display:flex;flex-wrap:wrap;gap:3px;align-items:center;margin-top:4px}#deskc input{background:#1d1d1d;color:#eee;border:1px solid #555;border-radius:4px;padding:3px 6px;width:140px}
 .man{margin:0 0 5px;background:var(--wood2);border-radius:5px;padding:3px 3px 2px;border:2px solid transparent}.man.act{border-color:var(--gold)}
 .mrow{display:grid;grid-template-columns:34px 1fr 12px;gap:3px;align-items:stretch}
@@ -120,6 +121,11 @@ dialog input{background:#111;color:#eee;border:1px solid #555;border-radius:4px;
 <footer><h2>About this virtual pipe organ</h2>
 <p>A free online pipe organ simulator that runs in your browser, with no download or sign-up. You sit at a five-manual console: two stop jambs with more than 240 drawknobs between them, five manuals (Choir, Great, Swell, Solo and Echo) with thumb pistons, expression shoes, a crescendo pedal, toe studs and a 32-note AGO-compass pedalboard. Play with the mouse, a touch screen, the computer keyboard, or MIDI keyboards and pedalboards. Stops are modelled on famous organs: Haarlem St Bavo, Hamburg St Jacobi, Paris St-Sulpice and Notre-Dame, Liverpool Cathedral, Sydney Town Hall and Atlantic City.</p>
 <p>Features: 25 couplers, sub and super octave couplers, tremulants, a 10-step crescendo pedal, sforzando, general and divisional pistons you can set yourself, a piston sequencer, adjustable rooms from studio to great cathedral, historic temperaments (Werckmeister, Kirnberger, Vallotti, meantone, Pythagorean) and Web MIDI input with single-keyboard and split modes. Each pipe is synthesised with its own tuning, speech and wind, so the sound is not a static electronic tone. It is built for current Chrome and Edge and also runs in Firefox and Safari; Web MIDI needs Chrome, Edge or Firefox.</p>
+<h2>How to play the organ: a quick registration guide</h2>
+<p><b>Stops and footage.</b> Each drawknob brings on one rank of pipes. The number is the length of the lowest pipe: 8′ sounds at the written pitch, 16′ an octave lower, 4′ an octave higher and 2′ two octaves higher. 32′ stops, found here only in the Pedal, sound two octaves below written pitch and are felt as much as heard. Mutations such as the Nasard 2⅔′ and Tierce 1⅗′ add single harmonics; mixtures add several at once.</p>
+<p><b>Building a hymn registration.</b> Start the manual with an 8′ and a 4′ principal (Diapason), add a 2′ for brightness and a mixture for a full congregation. Give the Pedal a 16′ (Subbass or Open Diapason) and an 8′, then couple Great to Pedal so the bass follows your left hand. For a quiet verse, use flutes (Gedeckt, Rohrflöte) on the Swell with the box half closed. Reeds (Trumpet, Oboe) carry a melody on a separate manual over a soft accompaniment.</p>
+<p><b>Couplers, pistons and the crescendo.</b> Couplers let one keyboard play another division's stops: Swell to Great adds the Swell to the Great. Set a combination by pressing SET and then a piston; recall it later with one click or with MIDI program change. The crescendo pedal adds stops in ten steps from soft to full organ, and the sforzando gives full organ at once.</p>
+<p><b>Learning hymns.</b> Pick a hymn on the music desk. <i>Listen</i> plays it on the Great, <i>Learn</i> drops each note onto its key and waits for you, and <i>Play</i> keeps time and scores every note with stars, like a piano-learning game. The tunes are public-domain melodies taken from <a href="https://hymnary.org/">Hymnary.org</a>.</p>
 <p><a href="https://github.com/virtualpipeorgan/organ">Source code on GitHub</a> · <a href=# id=privl>Privacy</a> · <a href=# id=terml>Terms</a></p></footer>
 <div id=start><div><h2>Virtual Pipe Organ</h2><p id=startm>Browsers only start sound after a click or tap. Headphones or good speakers bring out the 16′ and 32′ pedal stops.</p>
 <button id=go type=button>Start the organ</button><p style="font-size:12px">On iPhone or iPad, turn off the silent switch.</p></div></div>
@@ -555,6 +561,9 @@ function relWhere(f){for(const[k,e]of [...KS]){for(const h of [...e.h])if(f(h))e
 function halt(){run++;if(A){for(const p of new Set([...P.values(),...[...KS.values()].flatMap(e=>e.ps)]))fadeP(p,.05);for(const e of KS.values())brOff(e.br,.05)}for(const e of KS.values())hl(e.S,e.n,0);KS.clear();P.clear();for(const c in KD)delete KD[c];
 $('now').textContent='';if(TS)endTour()}
 function setExp(D,e){if(!D||!D.box)return;D.exp=Math.min(1,Math.max(0,e));D.sl&&(D.sl.value=Math.round(D.exp*100));applyExp(D)}
+// Public-domain hymn melodies (soprano line only), built by build_hymns.py from hymn_src/ (MusicXML on hymnary.org,
+// each tune page states 'Copyright: Public Domain'). n: [midi note, beats in quarter notes], -1 = rest. Easiest first.
+const HYMNS=[{"t":"St Anne","w":"O God, our help in ages past","by":"William Croft (1708)","src":"hymnary.org/tune/st_anne_croft","bpm":96,"n":[[67,1],[64,1],[69,1],[67,1],[72,1],[72,1],[71,1],[72,1],[67,1],[72,1],[67,1],[69,1],[66,1],[67,3],[71,1],[72,1],[69,1],[74,1],[71,1],[72,1],[69,1],[71,1],[67,1],[69,1],[72,1],[74,1],[71,1],[72,3]]},{"t":"Azmon","w":"O for a thousand tongues to sing","by":"C. G. Gläser (1828)","src":"hymnary.org/tune/azmon_glaser","bpm":92,"n":[[62,1],[67,0.5],[67,0.5],[69,1],[69,1],[71,0.5],[69,0.5],[67,1],[69,1],[71,0.5],[71,0.5],[72,1],[71,1],[69,2],[74,1],[74,0.5],[71,0.5],[71,1],[67,1],[67,0.5],[64,0.5],[64,1],[67,0.5],[64,0.5],[62,0.5],[67,0.5],[67,1],[69,1],[67,2]]},{"t":"Old Hundredth","w":"All people that on earth do dwell","by":"Louis Bourgeois (1551)","src":"hymnary.org/tune/old_hundredth_bourgeois","bpm":100,"n":[[67,2],[67,1],[66,1],[64,1],[62,1],[67,2],[69,2],[71,2],[71,2],[71,1],[71,1],[69,1],[67,1],[72,2],[71,2],[69,2],[67,2],[69,1],[71,1],[69,1],[67,1],[64,2],[66,2],[67,2],[74,2],[71,1],[67,1],[69,1],[72,1],[71,2],[69,2],[67,2]]},{"t":"New Britain","w":"Amazing grace","by":"Anonymous (1829)","src":"hymnary.org/tune/new_britain","bpm":84,"n":[[62,1],[67,2],[71,0.5],[67,0.5],[71,2],[69,1],[67,2],[64,1],[62,2],[62,1],[67,2],[71,0.5],[67,0.5],[71,2],[69,1],[74,5],[71,1],[74,1.5],[71,0.5],[74,0.5],[71,0.5],[67,2],[62,1],[64,1.5],[67,0.5],[67,0.5],[64,0.5],[62,2],[62,1],[67,2],[71,0.5],[67,0.5],[71,2],[69,1],[67,5]]},{"t":"Nicaea","w":"Holy, holy, holy! Lord God Almighty","by":"John Bacchus Dykes (1861)","src":"hymnary.org/tune/nicaea_dykes","bpm":96,"n":[[62,1],[62,1],[66,1],[66,1],[69,2],[69,2],[71,1.5],[71,0.5],[71,1],[71,1],[69,2],[66,2],[69,1.5],[69,0.5],[69,1],[69,1],[74,1],[74,1],[73,1],[69,1],[64,1],[69,1],[71,1.5],[69,0.5],[69,4],[62,1],[62,1],[66,1],[66,1],[69,1],[69,1],[69,2],[71,1.5],[71,0.5],[71,1],[71,1],[69,2],[69,2],[74,2],[69,1],[69,1],[71,2],[66,2],[67,1],[64,1],[64,1.5],[62,0.5],[62,4]]},{"t":"Lasst uns erfreuen","w":"All creatures of our God and King","by":"Geistliche Kirchengesäng, Cologne (1623)","src":"hymnary.org/tune/lasst_uns_erfreuen","bpm":120,"n":[[62,2],[62,1],[64,1],[66,1],[62,1],[66,1],[67,1],[69,4],[62,2],[62,1],[64,1],[66,1],[62,1],[66,1],[67,1],[69,4],[74,1],[73,1],[71,2],[69,2],[74,1],[73,1],[71,2],[69,2],[74,2],[74,1],[69,1],[69,1],[67,1],[66,1],[67,1],[69,4],[74,2],[74,1],[69,1],[69,1],[67,1],[66,1],[67,1],[69,4],[67,1],[66,1],[64,2],[62,2],[67,1],[66,1],[64,2],[62,2],[74,1],[73,1],[71,2],[69,2],[74,1],[73,1],[71,2],[69,2],[67,1],[66,1],[64,6],[62,4]]},{"t":"Hymn to Joy","w":"Joyful, joyful, we adore thee","by":"Ludwig van Beethoven (1824)","src":"hymnary.org/tune/hymn_to_joy_beethoven","bpm":104,"n":[[71,1],[71,1],[72,1],[74,1],[74,1],[72,1],[71,1],[69,1],[67,1],[67,1],[69,1],[71,1],[71,1.5],[69,0.5],[69,2],[71,1],[71,1],[72,1],[74,1],[74,1],[72,1],[71,1],[69,1],[67,1],[67,1],[69,1],[71,1],[69,1.5],[67,0.5],[67,2],[69,1],[69,1],[71,1],[67,1],[69,1],[71,0.5],[72,0.5],[71,1],[67,1],[69,1],[71,0.5],[72,0.5],[71,1],[69,1],[67,1],[69,1],[62,2],[71,1],[71,1],[72,1],[74,1],[74,1],[72,1],[71,1],[69,1],[67,1],[67,1],[69,1],[71,1],[69,1.5],[67,0.5],[67,2]]},{"t":"Stille Nacht","w":"Silent night","by":"Franz Xaver Gruber (1818)","src":"hymnary.org/tune/stille_nacht_gruber","bpm":96,"n":[[65,0.75],[67,0.25],[65,0.5],[62,1.5],[65,0.75],[67,0.25],[65,0.5],[62,1.5],[72,1],[72,0.5],[69,1.5],[70,1],[70,0.5],[65,1.5],[67,1],[67,0.5],[70,0.75],[69,0.25],[67,0.5],[65,0.75],[67,0.25],[65,0.5],[62,1.5],[67,1],[67,0.5],[70,0.75],[69,0.25],[67,0.5],[65,0.75],[67,0.25],[65,0.5],[62,1.5],[72,1],[72,0.5],[75,0.75],[72,0.25],[69,0.5],[70,1.5],[74,1.5],[70,0.5],[65,0.5],[62,0.5],[65,0.75],[63,0.25],[60,0.5],[58,3]]}];
 // ---------- shop: fill these in to monetise. Empty values hide the buttons, and with no `buy` link every Pro feature stays unlocked.
 const SHOP={
 // Stripe Payment Links, made by dev/stripe_setup.py (LIVE links, from stripe_links.live.json). Stripe Managed Payments is merchant of record.
@@ -650,7 +659,7 @@ sel(bar,'Room ',Object.keys(ROOMS).map(k=>[k,k]),'room','Church',v=>{ROOM=v;cons
 RS=ctl(bar,'Reverb ',.3,9,.1,'rt',ROOMS[ROOM][0],v=>{RT=v;clearTimeout(irT);irT=setTimeout(newVerb,250)},v=>v+' s');
 WS=ctl(bar,'Wet ',0,1.5,.05,'wet',ROOMS[ROOM][1],v=>{RM=v;WG&&WG.gain.setTargetAtTime(v,A.currentTime,.05)});
 ctl(bar,'Pipe character ',0,1,.05,'char',.6,v=>{setChar(v);DIV.forEach(D=>D.dirty=1)},v=>Math.round(v*100)+'%','0 = perfectly steady and in tune; higher adds each pipe’s own tuning, wind sway, breath and speech');
-ctl(bar,'Chiff ',0,1,.05,'chiff',.5,v=>CHIFF=v);
+ctl(bar,'Chiff ',0,1,.05,'chiff',matchMedia('(pointer:coarse)').matches?.2:.5,v=>CHIFF=v,null,'the breathy “chiff” as a flue pipe starts; lower on phones, whose small speakers make it sound like a strike');
 ctl(bar,'A4 ',392,466,1,'a4',440,v=>{if(A4!==v){A4=v;READY&&chg()}},v=>v+' Hz');
 ctl(bar,'Transpose ',-6,6,1,'tr',0,v=>{if(TR!==v){TR=v;revoice();$('trd').textContent=(v>0?'+':'')+v}},v=>(v>0?'+':'')+v);
 ctl(bar,'Trem rate ',3,8,.1,'trate',TRATE,v=>{TRATE=v;DIV.forEach(D=>D.lf&&(D.lf.frequency.value=v*(1+D.i*.03)))},v=>v+' Hz');
@@ -701,6 +710,12 @@ const sb=tp(tr,'SET',()=>setArm(!SETM),'press SET, then any piston, to store the
 if(D.id=='W'){const b=tp(tr,'Sw→Ped',()=>{CP['W>P']^=1;chg()},'Swell to Pedal reversible');b.id='wprev'}
 if(D.id=='C'){tp(tr,'◀',()=>gen(GSEQ>0?GSEQ-1:0),'previous general ([ key)','seq');tp(tr,'▶',()=>gen(Math.min(9,GSEQ+1)),'next general (] key) – step through G1…G10 like a sequencer','seq')}
 th.append(tl,tr);w.append(row,th);D.mw=w;$('mans').append(w);kbd(D,k)}
+// phones: the manuals are wider than the screen. They scroll together, so sliding one (its grip rail or scrollbar) moves all five
+// and keeps the hymn trainer's falling notes over the right keys.
+{const ws=[...document.querySelectorAll('#mans .kbw')];ws.forEach(w=>w.addEventListener('scroll',()=>{if(w._to!=null&&Math.abs(w.scrollLeft-w._to)<1.5)return; // an echo of our own sync: ignore, or it cancels a smooth scroll
+ for(const x of ws)if(x!==w&&Math.abs(x.scrollLeft-w.scrollLeft)>=1.5){x._to=w.scrollLeft;x.scrollLeft=w.scrollLeft}},{passive:true}))}
+function follow(D,n){const k=D.keys[n],w=k&&k.closest('.kbw');if(!w||w.scrollWidth<=w.clientWidth+2)return;const r=k.getBoundingClientRect(),wr=w.getBoundingClientRect();
+ if(r.left<wr.left+wr.width*.15||r.right>wr.right-wr.width*.15)w.scrollTo({left:w.scrollLeft+r.left+r.width/2-(wr.left+wr.width/2),behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'})}
 // ---------- pedal area: toe studs, expression shoes, crescendo, pedalboard
 const ts=(host,t,f,title,cls)=>btn(host,t,f,title,'toe'+(cls?' '+cls:''));
 {const L=$('toeL'),R=$('toeR'),sh=$('shoes');
@@ -716,11 +731,78 @@ i.oninput=()=>{CR=+i.value;chg()};const lm=E('div','lamps');for(let j=1;j<=10;j+
 function lamps(){const ls_=document.querySelectorAll('.lamps i');ls_.forEach((x,j)=>x.classList.toggle('on',SFZ||j<CR));$('crd').textContent=SFZ?'Sfz':CR?CR+'/10':'off'}
 kbd(DV.P,$('pb'));
 const setExp0=setExp;setExp=(D,e)=>{setExp0(D,e);D&&D.sl&&D.sl.sync&&D.sl.sync()};
+// ---------- hymn trainer (Simply-Piano style): public-domain melodies (hymns.js, from hymnary.org) fall onto the Great keys.
+// Listen: the organ plays the tune. Learn: each note waits on its key until you play it. Play: notes keep time and are scored
+// Perfect / Good / Miss with a streak; the result is 1-3 stars and saved per hymn. Own holder and run id, so it never cuts what you hold.
+let HY=null,hyRun=0;
+const HYK='organ-hymn-best-v2',hyBest=(()=>{try{return JSON.parse(ls.get(HYK)||'{}')||{}}catch(e){return{}}})();
+const hyMark=(n,on,c='nx')=>{const k=DV.G.keys[n];k&&k.classList.toggle(c,!!on)}; // glow only on the Great (where the notes fall); any manual still counts
+const hyStars=a=>a>=.95?3:a>=.8?2:a>=.6?1:0,starTxt=s=>'★'.repeat(s)+'☆'.repeat(3-s);
+function hyLabels(){const s=$('hysel');if(!s)return;[...s.options].forEach((o,i)=>{const t=HYMNS[i],b=hyBest[t.src];o.textContent=(b?starTxt(b.s)+' ':'')+t.t+(t.w?' – '+t.w:'')})}
+function hyCanvas(){let c=$('hyc');if(!c){c=E('canvas');c.id='hyc';c.setAttribute('aria-hidden','true');DV.G.mw.before(c)} // right above the Great, so notes land on the keys you play
+ c.hidden=false;DV.G.mw.scrollIntoView({block:'nearest',behavior:'auto'});return c}
+function hyStop(quiet){if(!HY)return;hyRun++;relWhere(h=>h.startsWith('hy'));for(let n=0;n<128;n++)hyMark(n,0);if(HY.reg)setReg(HY.reg);
+ HY=null;['hyl','hyle','hyp'].forEach(i=>$(i)&&$(i).classList.remove('on'));const c=$('hyc');if(c)c.hidden=true;if(!quiet)msg('')}
+const hySpeed=()=>+($('hysp')?.value||1),hyQ=t=>60000/(t.bpm||88)/hySpeed(); // ms per quarter note
+function hyStart(mode){const t=HYMNS[$('hysel').value];if(!t)return;if(HY){const m=HY.mode;hyStop();if(m==mode)return}init();if(!A)return;
+ const q=hyQ(t);let at=0;const notes=t.n.map(([p,b])=>{const o={p,b,t:at,st:p<0?'rest':'todo'};at+=b*q;return o});
+ HY={mode,t,notes,q,i:0,len:at,t0:performance.now()+(mode=='play'?4*q:0),streak:0,best:0,hit:0,good:0,miss:0,wrong:0,fx:[],id:++hyRun,reg:mode=='listen'?getReg():null};
+ $({listen:'hyl',learn:'hyle',play:'hyp'}[mode]).classList.add('on');
+ if(mode=='listen')preset(PRE['Diapason chorus']);else if(!DV.G.stops.some(s=>s.on))preset(PRE['Diapason chorus']);
+ hyCanvas();{const ps=t.n.filter(([p])=>p>0).map(([p])=>p);follow(DV.G,Math.round((Math.min(...ps)+Math.max(...ps))/2))}requestAnimationFrame(hyDraw);if(mode=='listen')hyListen(HY);else if(mode=='learn')hyNext();else msg(`${t.t}: get ready…`)}
+async function hyListen(s){const h='hy'+s.id;for(const o of s.notes){if(s.id!==hyRun)return;s.i=s.notes.indexOf(o);msg(`${s.t.t}: listening, note ${s.i+1} of ${s.notes.length}`);
+ if(o.p>0){follow(DV.G,o.p);press(DV.G,o.p,h);hyMark(o.p,1)}await sleep(o.b*s.q*.92);if(o.p>0){release(DV.G,o.p,h,1);hyMark(o.p,0)}await sleep(o.b*s.q*.08)}
+ if(s.id===hyRun){hyStop(1);msg(`${s.t.t}: now try Learn, then Play`)}}
+function hyNext(){const s=HY;while(s.i<s.notes.length&&s.notes[s.i].p<0)s.i++; // rests need no key
+ if(s.i>=s.notes.length)return hyDone();const o=s.notes[s.i];hyMark(o.p,1);follow(DV.G,o.p);
+ msg(`${s.t.t}: Learn, note ${s.i+1} of ${s.notes.length}${s.streak>2?` · streak ${s.streak}`:''}`)}
+function hyDone(){const s=HY,n=s.notes.filter(o=>o.p>=0).length;let acc;
+ if(s.mode=='learn')acc=n/(n+s.wrong);else acc=(s.hit+.7*s.good)/n;const st=hyStars(acc),k=$('hysel').value,old=hyBest[s.t.src];
+ const rec=!old||st>old.s||(st==old.s&&acc>old.a);if(rec&&s.mode=='play'){hyBest[s.t.src]={s:st,a:+acc.toFixed(3)};ls.set(HYK,JSON.stringify(hyBest));hyLabels()}
+ const t=s.t,mode=s.mode,best=Math.max(s.best,s.streak);hyStop(1);
+ const d=E('div');d.innerHTML=`<p class=stars aria-label="${st} of 3 stars">${starTxt(st)}</p><p><b>${Math.round(acc*100)}%</b> accuracy`+
+  (mode=='play'?` · ${s.hit} perfect, ${s.good} good, ${s.miss} missed · best streak ${best}`:` · ${s.wrong} wrong key${s.wrong==1?'':'s'}`)+`</p>`+
+  (mode=='play'&&rec?'<p class=ok>New personal best!</p>':'')+(mode=='learn'?'<p>Ready? Try <b>Play</b> to be scored in time.</p>':st<3?'<p>Tip: slow the speed down, then build it back up.</p>':'')+
+  `<p style="font-size:12px">${t.t} (${t.by}). Melody from <a href="https://${t.src}" target=_blank rel=noopener>hymnary.org</a>, public domain.</p>`;
+ const again=btn(d,'Try again',()=>{$('dlg').close();hyStart(mode)});if(+k<HYMNS.length-1)btn(d,'Next hymn',()=>{$('dlg').close();$('hysel').value=+k+1;hyStart(mode)});
+ dlg(`${t.t}: ${mode=='play'?'Play':'Learn'} result`,d);again.focus()}
+function hyJudge(n){const s=HY,now=performance.now()-s.t0,win=Math.max(160,s.q*.45);let best=null;
+ for(const o of s.notes)if(o.st=='todo'&&o.p===n&&Math.abs(now-o.t)<=win&&(!best||Math.abs(now-o.t)<Math.abs(now-best.t)))best=o;
+ if(!best){s.wrong++;s.fx.push({p:n,txt:'✗',c:'#ff6b6b',t:performance.now()});return}
+ const e=Math.abs(now-best.t),perfect=e<=Math.max(90,s.q*.18);best.st=perfect?'hit':'good';perfect?s.hit++:s.good++;s.streak++;s.best=Math.max(s.best,s.streak);
+ s.fx.push({p:n,txt:perfect?'Perfect':'Good',c:perfect?'#7dff9b':'#ffd36b',t:performance.now()})}
+function hyTick(){const s=HY,now=performance.now()-s.t0,win=Math.max(160,s.q*.45);
+ for(const o of s.notes)if(o.st=='todo'&&now>o.t+win){o.st='miss';s.miss++;s.best=Math.max(s.best,s.streak);s.streak=0;s.fx.push({p:o.p,txt:'Miss',c:'#ff8a8a',t:performance.now()})}
+ const cur=s.notes.find(o=>o.st=='todo'&&o.p>=0);if(cur&&cur!==s.cur){s.cur=cur;for(let n=0;n<128;n++)hyMark(n,0);hyMark(cur.p,1);follow(DV.G,cur.p)}
+ if(now<0)msg(`${s.t.t}: ${Math.ceil(-now/s.q)}…`);else msg(`${s.t.t}: Play · streak ${s.streak} · ${s.hit+s.good} of ${s.notes.filter(o=>o.p>=0).length}`);
+ if(now>s.len+win)hyDone()}
+function hyDraw(){const s=HY,c=$('hyc');if(!s||!c||c.hidden)return;if(s.mode=='play')hyTick();if(!HY)return;
+ const w=c.clientWidth,h=c.clientHeight,dpr=devicePixelRatio||1;if(c.width!==w*dpr){c.width=w*dpr;c.height=h*dpr}const g=c.getContext('2d');g.setTransform(dpr,0,0,dpr,0,0);
+ g.clearRect(0,0,w,h);const cr=c.getBoundingClientRect(),hit=h-14,pxms=(h-30)/(s.q*6); // six beats visible
+ const now=s.mode=='learn'?(s.notes[s.i]?.t??s.len):s.mode=='listen'?(s.notes[s.i]?.t??0):performance.now()-s.t0;
+ g.fillStyle='#ffffff22';g.fillRect(0,hit,w,2);
+ for(const o of s.notes){if(o.p<0||o.st=='hit'||o.st=='good')continue;const k=DV.G.keys[o.p];if(!k)continue;const r=k.getBoundingClientRect();
+  const y=hit-(o.t-now)*pxms,len=Math.max(8,o.b*s.q*pxms-3);if(y<-len||y-len>h)continue;const x=r.left-cr.left+1,kw=Math.max(8,r.width-2);
+  g.fillStyle=o.st=='miss'?'#8a3a3a':k.classList.contains('b')?'#2d8fd8':'#39b3ff';g.beginPath();g.roundRect?g.roundRect(x,y-len,kw,len,4):g.rect(x,y-len,kw,len);g.fill()}
+ const t=performance.now();s.fx=s.fx.filter(f=>t-f.t<700);g.font='bold 13px system-ui,sans-serif';g.textAlign='center';
+ for(const f of s.fx){const k=DV.G.keys[f.p];if(!k)continue;const r=k.getBoundingClientRect();g.globalAlpha=1-(t-f.t)/700;g.fillStyle=f.c;g.fillText(f.txt,r.left-cr.left+r.width/2,hit-8-(t-f.t)/25)}
+ g.globalAlpha=1;if(s.mode=='play'&&s.streak>=5){g.textAlign='right';g.fillStyle='#ffd36b';g.fillText(`🔥 ${s.streak}`,w-8,18)}
+ requestAnimationFrame(hyDraw)}
+const press1=press;press=(S,n,src)=>{press1(S,n,src);const s=HY;if(!s||s.mode=='listen'||src=='sus'||(src&&String(src).startsWith('hy')))return;
+ if(s.mode=='play'){hyJudge(n);return}
+ const o=s.notes[s.i];if(o&&n===o.p){hyMark(n,0);s.i++;s.streak++;s.best=Math.max(s.best,s.streak);s.fx.push({p:n,txt:'✓',c:'#7dff9b',t:performance.now()});hyNext()}
+ else{s.wrong++;s.best=Math.max(s.best,s.streak);s.streak=0;s.fx.push({p:n,txt:'✗',c:'#ff6b6b',t:performance.now()})}};
+
 // ---------- music desk: display and quick controls
 {const q=$('deskc');
 const rl=E('select');rl.id='reglib';rl.setAttribute('aria-label','registration library');rl.append(new Option('Registration library…',''));for(const k in PRE)rl.append(new Option(k,k));
 rl.onchange=()=>{if(rl.value){preset(PRE[rl.value]);msg('registration: '+rl.value)}rl.value='';rl.blur()};q.append(rl);
 btn(q,'▶ Famous stops',()=>tour(FAM),'hear each stop from a famous organ on its own; click again to stop');
+{const hs=E('select');hs.id='hysel';hs.setAttribute('aria-label','hymn tune');HYMNS.forEach((t,i)=>hs.append(new Option(t.t,i)));hs.onchange=()=>{HY&&hyStop();hs.blur()};
+ const sp=E('select');sp.id='hysp';sp.setAttribute('aria-label','hymn speed');[['0.5','50%'],['0.75','75%'],['1','100%']].forEach(([v,l])=>sp.append(new Option(l,v)));sp.value='0.75';sp.title='tempo for Listen and Play';sp.onchange=()=>sp.blur();
+ if(HYMNS.length){q.append(hs,sp);btn(q,'▶ Listen',()=>hyStart('listen'),'hear the hymn tune on the Great; click again to stop').id='hyl';
+  btn(q,'Learn',()=>hyStart('learn'),'each note falls onto its key and waits for you; click again to stop').id='hyle';
+  btn(q,'★ Play',()=>hyStart('play'),'play in time: every note is scored Perfect, Good or Miss and you earn up to 3 stars').id='hyp';hyLabels()}}
 btn(q,'Latch',e=>{LATCH^=1;tog(e.currentTarget,LATCH);if(!LATCH)relWhere(h=>h=='L')},'click or tap keys to toggle them on and off, so chords of any size can be built with a mouse or one finger');
 btn(q,'Panic',()=>halt(),'silence everything (Esc)','danger');
 const f=E('input');f.type='search';f.placeholder='find a stop…';f.setAttribute('aria-label','find a stop');f.oninput=()=>{const t=f.value.trim().toLowerCase();let first;
@@ -731,7 +813,7 @@ function endTour(){if(TS){const t=TS;TS=null;CR=t.cr;$('crsl').value=CR;setReg(t
 async function tour(steps){if(TS){run++;relWhere(h=>h.startsWith('tour'));endTour();msg('');return}init();if(!A)return;const id=++run,h='tour'+id;TS={reg:getReg(),cr:CR};CR=0;
 for(const[lab,S,reg,notes,d]of steps){if(id!==run)break;setReg(reg);msg(lab);notes.forEach(n=>press(S,n,h));await sleep(d);notes.forEach(n=>release(S,n,h,1));if(id!==run)break;await sleep(200)}
 relWhere(x=>x==h);if(id===run){endTour();msg('')}}
-const halt0=halt;halt=()=>{halt0();setArm(0)};
+const halt0=halt;halt=()=>{halt0();setArm(0);HY&&hyStop()};
 // ---------- MIDI
 const CHD='PCGWSE';let MA=null;
 function relKey(n,h){for(const D of DIV)release(D,n,h)}
@@ -744,10 +826,10 @@ else if(k==192&&a<10)gen(a)}
 async function midiOn(ask){if(!navigator.requestMIDIAccess){midiB.textContent='No Web MIDI in this browser';return}init();
 try{MA=MA||await navigator.requestMIDIAccess();const hook=()=>{const n=[];for(const i of MA.inputs.values()){i.onmidimessage=mm;n.push(i.name)}midiB.textContent='MIDI: '+(n.join(', ')||'no device yet');$('midid').textContent=n.length?n.length+' MIDI':''};
 hook();MA.onstatechange=e=>{if(e.port&&e.port.state=='disconnected')relWhere(h=>h.endsWith('@'+e.port.id));hook()};SET.midi=1;saveSoon()}catch(x){midiB.textContent=ask?'MIDI permission denied':'Enable MIDI'}}
-// ---------- recording to WAV (Pro): an AudioWorklet copies the master output; samples are kept as 16-bit to save memory
+// ---------- recording to WAV (free since 2026-11-23; free rivals record too): an AudioWorklet copies the master output; samples are kept as 16-bit to save memory
 const REC={on:0};
 const RECW="registerProcessor('rec',class extends AudioWorkletProcessor{process(i){const c=i[0];if(c&&c.length)this.port.postMessage([c[0].slice(0),(c[1]||c[0]).slice(0)]);return true}})";
-async function recToggle(){if(!pro()){proDlg('Recording to WAV');return}init();if(!A)return;const b=$('recb');
+async function recToggle(){init();if(!A)return;const b=$('recb');
 if(REC.on){REC.on=0;REC.tap.disconnect(REC.node);REC.node.port.onmessage=null;clearInterval(REC.t);b.classList.remove('rec');b.textContent='● Record';saveWav();return}
 if(!A.audioWorklet){msg('Recording needs a newer browser (AudioWorklet).');return}
 try{if(!REC.mod){await A.audioWorklet.addModule(URL.createObjectURL(new Blob([RECW],{type:'text/javascript'})));REC.mod=1}}catch(x){msg('Recording could not start: '+x.message);return}
@@ -767,8 +849,8 @@ f.onchange=async()=>{try{const d=JSON.parse(await f.files[0].text());if(d.app!==
 if(d.pistons&&typeof d.pistons=='object')for(const[k,r]of Object.entries(d.pistons))if(okReg(r))PS[k]={...r,on:r.on.map(sk).filter(Boolean)};store();if(okReg(d.registration))setReg(d.registration);msg('loaded '+f.files[0].name)}catch(x){msg('could not load file: '+x.message)}};f.click()}
 // ---------- dialogs: Pro, support, help, privacy, terms
 function proUI(){const b=$('prob');b.hidden=!SHOP.buy;b.textContent=pro()?'Pro ✓':'Pro'+(SHOP.price?' · '+SHOP.price:'');$('supb').hidden=!SHOP.support;if(SHOP.support)$('supb').href=SHOP.support}
-function proDlg(why){const d=E('div');d.innerHTML=`${why?`<p><b>${why}</b> is part of Pro.</p>`:''}<p>The organ itself stays free: every stop, coupler, piston (memory level 1), MIDI and all the sound settings.
-Pro is how players support its development, and it adds tools for regular practice:</p><ul><li>Record what you play to a WAV file (16-bit stereo, up to 30 minutes)</li><li>Memory levels 2–8: eight complete sets of pistons</li><li>Save and load registration files to move your pistons between browsers or share them</li></ul>`;
+function proDlg(why){const d=E('div');d.innerHTML=`${why?`<p><b>${why}</b> is part of Pro.</p>`:''}<p>The organ itself stays free: every stop, coupler, piston (memory level 1), MIDI, recording to WAV and all the sound settings.
+Pro is how players support its development, and it adds tools for regular practice:</p><ul><li>Memory levels 2–8: eight complete sets of pistons</li><li>Save and load registration files to move your pistons between browsers or share them</li></ul>`;
 if(pro()){d.append(E('p','ok','Pro is unlocked in this browser. Thank you!'))}
 else{const by=E('a','buy','Buy Pro'+(SHOP.price?' – '+SHOP.price:''));by.href=SHOP.buy;by.target='_blank';by.rel='noopener';
 let sb='';if(SHOP.sub){sb=E('a','buy','Monthly'+(SHOP.subPrice?' – '+SHOP.subPrice:''));sb.href=SHOP.sub;sb.target='_blank';sb.rel='noopener';sb.title='Pro as a subscription; cancel any time'}
