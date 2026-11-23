@@ -1,79 +1,178 @@
-<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
-<title>Virtual Pipe Organ – Free Online Pipe Organ Simulator with 200+ Stops, 5 Manuals &amp; Pedalboard</title>
-<meta name=description content="Play a free virtual pipe organ in your browser: 5 manuals, 32-note pedalboard, 200+ stops, couplers, swell shoes, crescendo, tremulants, reverb, historic temperaments and MIDI. No download.">
+<!doctype html><html lang=en><head><meta charset=utf-8>
+<link rel=icon href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23241509'/%3E%3Cg fill='%23d9a441'%3E%3Crect x='10' y='22' width='7' height='34' rx='3'/%3E%3Crect x='20' y='12' width='7' height='44' rx='3'/%3E%3Crect x='30' y='6' width='7' height='50' rx='3'/%3E%3Crect x='40' y='12' width='7' height='44' rx='3'/%3E%3Crect x='50' y='22' width='7' height='34' rx='3'/%3E%3C/g%3E%3C/svg%3E">
+<link rel=manifest href=manifest.webmanifest><link rel=apple-touch-icon href=icon.svg><meta name=viewport content="width=device-width,initial-scale=1"><meta name=theme-color content="#1a0f07">
+<title>Virtual Pipe Organ – Free Online Pipe Organ Simulator with 240+ Stops, 5 Manuals &amp; Pedalboard</title>
+<meta name=description content="Play a free virtual pipe organ in your browser: a realistic console with 5 manuals, 32-note pedalboard, 240+ stops, couplers, swell shoes, crescendo, tremulants, reverb, historic temperaments and MIDI. No download.">
 <meta name=keywords content="virtual pipe organ, online organ, pipe organ simulator, church organ, organ stops, pedalboard, Web MIDI organ, Bach organ, Cavaillé-Coll, Schnitger, swell pedal, crescendo pedal, couplers, free organ">
-<meta property=og:title content="Virtual Pipe Organ – play a 200+ stop pipe organ online"><meta property=og:description content="5 manuals, pedalboard, couplers, swell shoes, crescendo, MIDI. Free, in your browser."><meta name="msvalidate.01" content="CFBB86C541D579AFA7B9067668D3ED02"><meta property=og:type content=website><link rel=canonical href=https://oaefsboe007.github.io/organ/><meta property=og:url content=https://oaefsboe007.github.io/organ/>
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"WebApplication","name":"Virtual Pipe Organ","applicationCategory":"MusicApplication","operatingSystem":"Any (web browser)","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Free browser pipe organ with 5 manuals, AGO pedalboard, 200+ stops, couplers, swell shoes, crescendo and MIDI input."}</script>
+<meta property=og:title content="Virtual Pipe Organ – play a 240+ stop pipe organ online"><meta property=og:description content="A full organ console in your browser: 5 manuals, pedalboard, drawknobs, pistons, swell shoes, crescendo, MIDI. Free."><meta name="msvalidate.01" content="CFBB86C541D579AFA7B9067668D3ED02"><meta property=og:type content=website><link rel=canonical href=https://virtualpipeorgan.github.io/organ/><meta property=og:url content=https://virtualpipeorgan.github.io/organ/><meta property=og:image content=https://virtualpipeorgan.github.io/organ/og.jpg><meta property=og:image:width content=1200><meta property=og:image:height content=630><meta property=og:image:alt content="The Virtual Pipe Organ console: stop jambs, stacked manuals and pedalboard"><meta name=twitter:card content=summary_large_image><meta name=twitter:image content=https://virtualpipeorgan.github.io/organ/og.jpg>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"WebApplication","name":"Virtual Pipe Organ","url":"https://virtualpipeorgan.github.io/organ/","applicationCategory":"MusicApplication","operatingSystem":"Any (web browser)","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Free browser pipe organ console with 5 manuals, 32-note pedalboard, 240+ stops, couplers, swell shoes, crescendo and MIDI input."}</script>
 <style>
-body{font:13px system-ui;background:#111;color:#ddd;margin:14px}
-h1{font-size:18px;margin:0 0 4px}small{color:#888}
-button{background:#2a2a2a;color:#eee;border:1px solid #555;border-radius:5px;padding:4px 8px;margin:2px;cursor:pointer;font-size:12px}
-button.on{background:#7a4f14;border-color:#d9a441}button.set{background:#8a2020;border-color:#f66}
-#bar,#gp,#shoes{display:flex;flex-wrap:wrap;align-items:center;gap:4px 14px;margin:8px 0}
-.ct{display:flex;align-items:center;gap:5px;font-size:12px;color:#bbb}.ct input[type=range]{width:110px}.ct span{color:#d9a441;min-width:34px}
-#now{color:#d9a441;min-height:1.3em}#st{color:#8fd18f;font:12px monospace}
-#jambs{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:8px;margin:8px 0}
-details.dv{border:1px solid #333;border-radius:8px;padding:6px;background:#161616}
-summary{cursor:pointer;color:#f3d38a;font-size:14px}summary em{color:#777;font-size:11px;font-style:normal}
-.tl{margin:4px 0}.tl b{color:#777;font-size:11px;margin-right:2px}
-.sg{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:4px;margin-top:4px}
-.k{border:1px solid #444;border-left-width:5px;border-radius:5px;padding:3px 5px;cursor:pointer;background:#1b1b1b;font-size:11px}
-.k.pr{border-left-color:#d9a441}.k.fl{border-left-color:#5aa0e0}.k.st{border-left-color:#5fbf6a}.k.rd{border-left-color:#d9534f}.k.pc{border-left-color:#4ed0c8}
-.k.on{background:#5a3a12;border-color:#d9a441}.k.cr{background:#2c2c44;border-color:#88f}
-.k b{display:block;color:#f3d38a;font-size:12px;font-weight:600}.k i{color:#999;display:block}.k.on i{color:#cba}
-.cmp .k i{display:none}
-.man{margin:6px 0;border:2px solid #222;border-radius:6px;padding:4px}.man.act{border-color:#d9a441}
-.man>span{font-size:11px;color:#999;cursor:pointer}
-.kb{display:flex;position:relative;height:88px;user-select:none;touch-action:none}.kb.pdl{height:150px}
-.w{flex:1;background:#eee;border:1px solid #333;color:#555;font-size:9px;display:flex;align-items:flex-end;justify-content:center;pointer-events:auto}
-.b{position:absolute;height:62%;background:#222;z-index:1}
-.pdl .w{background:#c9a56a}.pdl .b{background:#3a2412}
-.w.d,.b.d{background:#d9a441}
-@media(max-width:700px){body{margin:6px}#jambs{grid-template-columns:1fr}.sg{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}.ct input[type=range]{width:80px}}
-.man{overflow-x:auto}.kb{min-width:820px}.kb.pdl{min-width:560px}
+:root{--wood:#2a170b;--wood2:#3a2212;--gold:#d9a441;--ivory:#f3ead3;--ink:#ddd}
+*{box-sizing:border-box}[hidden]{display:none!important}
+body{font:13px system-ui,sans-serif;background:#0d0906;color:var(--ink);margin:0}
+button{background:#2a2a2a;color:#eee;border:1px solid #555;border-radius:5px;padding:4px 9px;margin:2px;cursor:pointer;font-size:12px;touch-action:manipulation}
+button:hover{border-color:#999}button.on{background:#7a4f14;border-color:var(--gold)}button.set{background:#8a2020;border-color:#f66}button.danger{border-color:#a44}
+:focus-visible{outline:2px solid #6cf;outline-offset:2px}
+header{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:6px 12px;background:#140b05;border-bottom:1px solid #3a2414;position:relative;z-index:5}
+header h1{font:600 17px Georgia,serif;margin:0;color:#f3d38a;letter-spacing:.3px}header nav{display:flex;flex-wrap:wrap;gap:2px;margin-left:auto;align-items:center}
+header a.sup{color:#f3d38a;text-decoration:none;border:1px solid #8a6a2a;border-radius:5px;padding:4px 9px;font-size:12px}
+#recb.rec{background:#8a1c1c;border-color:#f66;animation:pulse 1.2s infinite}@keyframes pulse{50%{opacity:.7}}
+#prob{border-color:var(--gold);color:#f3d38a}
+#bar{display:flex;flex-wrap:wrap;align-items:center;gap:6px 16px;padding:8px 12px;background:#17100a;border-bottom:1px solid #3a2414}
+.ct{display:flex;align-items:center;gap:5px;font-size:12px;color:#bbb}.ct input[type=range]{width:100px}.ct span{color:var(--gold);min-width:34px}
+select{background:#222;color:#eee;border:1px solid #555;border-radius:4px;padding:3px;max-width:290px}
+/* console: stop jambs flank the manuals, as seen from the organ bench */
+#console{display:grid;grid-template-columns:clamp(250px,21vw,400px) minmax(540px,1fr) clamp(250px,21vw,400px);gap:10px;padding:10px;align-items:start;
+background:linear-gradient(#24150a,#1a0f07);max-width:1900px;margin:0 auto}
+.jamb{background:linear-gradient(90deg,#2e1a0c,#3b2312 50%,#2e1a0c);border:1px solid #4a2c15;border-radius:8px;padding:6px;box-shadow:inset 0 0 20px #0008}
+.div{margin-bottom:10px}.div h3{margin:2px 0 6px;text-align:center;font:600 12px Georgia,serif;letter-spacing:3px;text-transform:uppercase;color:#f3d38a;background:#1c1008;border:1px solid #6a4a20;border-radius:3px;padding:2px}
+.div h3 em{color:#a98;font:10px system-ui;letter-spacing:0;font-style:normal}
+.kg{display:grid;grid-template-columns:repeat(auto-fill,minmax(58px,1fr));gap:7px 2px;justify-items:center}
+.k{width:56px;height:56px;border-radius:50%;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:4px;overflow:hidden;user-select:none;-webkit-user-select:none;
+background:radial-gradient(circle at 38% 32%,#fffdf4,#eee3c8 55%,#bba984);border:3px solid #1c1108;color:#1a1a1a;box-shadow:0 2px 0 #0a0603,0 3px 5px #000a;transition:transform .08s,box-shadow .08s}
+.k b{font:600 8.4px/1.08 Georgia,serif;display:block}.k.lg b{font-size:7.1px;letter-spacing:-.2px}.k.xl b{font-size:6.3px;letter-spacing:-.3px}.k small{font:600 9px Georgia,serif;margin-top:1px}
+.k.fl{color:#163f73}.k.st{color:#1e5124}.k.rd{color:#a3121a}.k.pc{color:#0a5f5a}
+.k.on{transform:translateY(-3px) scale(1.07);box-shadow:0 0 0 3px var(--gold),0 6px 0 #0a0603,0 8px 14px #000c;background:radial-gradient(circle at 38% 32%,#fff,#fff2cf 55%,#d8bf86)}
+.k.cr{box-shadow:0 0 0 3px #8a7cff,0 2px 0 #0a0603}.k.hit{outline:3px dashed #6cf;outline-offset:2px}.k:hover{filter:brightness(1.06)}
+body.small .k{width:46px;height:46px}body.small .k b{font-size:6.6px}body.small .k.lg b,body.small .k.xl b{font-size:5.6px}body.small .kg{grid-template-columns:repeat(auto-fill,minmax(48px,1fr))}
+.tabs{display:flex;flex-wrap:wrap;gap:3px;margin-top:6px;justify-content:center}
+.tab{background:linear-gradient(#f6eed8,#d9cba6);color:#222;border:1px solid #1c1108;border-radius:3px;font:600 9px Georgia,serif;padding:3px 5px;margin:0;min-width:60px;box-shadow:0 2px 0 #0a0603}
+.tab.on{background:linear-gradient(#ffe7a6,#e0b357);box-shadow:0 0 0 2px var(--gold);transform:translateY(1px)}.tab.cr{box-shadow:0 0 0 2px #8a7cff}
+#center{min-width:0}
+#desk{background:#0c0a08;border:2px solid #4a2c15;border-radius:6px;padding:6px 10px;margin-bottom:6px;box-shadow:inset 0 0 12px #000}
+#lcd{display:flex;flex-wrap:wrap;gap:4px 14px;font:12px ui-monospace,Consolas,monospace;color:#8fd18f;align-items:center}#lcd b{color:#cfc}
+#lcd button{font:11px ui-monospace,monospace;padding:0 6px;background:#132013;border-color:#2e4a2e;color:#8fd18f}
+#now{color:var(--gold);min-height:1.35em;font-size:13px;margin-top:3px}#hint{color:#998;font-size:11px;min-height:1.2em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#st{color:#6a9a6a;font:11px ui-monospace,monospace}
+#deskc{display:flex;flex-wrap:wrap;gap:3px;align-items:center;margin-top:4px}#deskc input{background:#1d1d1d;color:#eee;border:1px solid #555;border-radius:4px;padding:3px 6px;width:140px}
+.man{margin:0 0 5px;background:var(--wood2);border-radius:5px;padding:3px 3px 2px;border:2px solid transparent}.man.act{border-color:var(--gold)}
+.mrow{display:grid;grid-template-columns:34px 1fr 12px;gap:3px;align-items:stretch}
+.cheek{background:linear-gradient(90deg,#4a2a14,#2a170b);border-radius:4px;color:#f3d38a;font:10px Georgia,serif;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;text-align:center;line-height:1.1;padding:2px 0}
+.cheek b{font-size:15px}.cheek span{writing-mode:vertical-rl;transform:rotate(180deg);font-size:9.5px;color:#cba}.cheek i{font-size:8px;color:#987}.cheek.r{cursor:default}
+.kbw{overflow-x:auto;overflow-y:hidden;scrollbar-width:thin}
+.rail{height:9px;background:repeating-linear-gradient(90deg,#1a0f07 0 6px,#24150b 6px 12px);touch-action:pan-x;min-width:760px}
+.kb{display:flex;position:relative;height:74px;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;touch-action:none;min-width:760px}
+.w{flex:1;background:linear-gradient(#fbf6e8,#efe5cb 85%,#d8ccae);border:1px solid #2a1c10;border-top:none;border-radius:0 0 3px 3px;color:#665;font-size:8px;position:relative}
+.b{position:absolute;height:60%;background:linear-gradient(#3a2e26,#0e0a08 70%);z-index:1;border-radius:0 0 2px 2px;box-shadow:1px 2px 2px #000a}
+.w::after{content:attr(data-c);position:absolute;bottom:2px;left:0;right:0;text-align:center}
+[data-l]::before{content:attr(data-l);position:absolute;left:0;right:0;text-align:center;font:600 9px system-ui;color:#3a6ea8;bottom:13px}.b[data-l]::before{color:#9cf;bottom:4px}
+.w.d{background:linear-gradient(#ffe2a0,#e7b04c)}.b.d{background:linear-gradient(#b8822c,#7a5418)}
+.thumb{display:flex;justify-content:space-between;gap:6px;padding:2px 40px 0 40px;flex-wrap:wrap}.thumb>div{display:flex;flex-wrap:wrap;gap:2px}
+.pist{width:24px;height:20px;padding:0;margin:0;border-radius:50%/45%;font:600 9px system-ui;background:radial-gradient(#fbf3dc,#cdbb90);color:#222;border:1px solid #120a04;box-shadow:0 1px 0 #000}
+.pist.gen{background:radial-gradient(#e6eefc,#9fb2cf)}.pist.can{background:radial-gradient(#ffd9d9,#c98a8a)}.pist.set0{width:34px;background:radial-gradient(#ffb3b3,#c33);color:#fff}.pist.set0.set{box-shadow:0 0 0 2px #f66;animation:pulse 1s infinite}
+.pist.seq{background:radial-gradient(#e0ffe0,#8bb38b)}.pist.on{box-shadow:0 0 0 2px var(--gold)}
+#wprev{width:auto;border-radius:9px;padding:0 6px}
+/* kneeboard: toe studs either side of the expression shoes and crescendo */
+#pedals{padding:4px 0 6px;margin-top:4px;border-top:2px solid #3a2212}
+#knee{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:end}
+.toes{display:flex;flex-wrap:wrap;gap:3px;align-content:flex-end}.toes.r{justify-content:flex-end}
+.toe{min-width:26px;height:26px;border-radius:50%;padding:0 5px;margin:0;font:600 9px system-ui;background:radial-gradient(#d9d9d9,#7d7d7d);color:#111;border:1px solid #000;box-shadow:0 2px 0 #000}
+.toe.gen{background:radial-gradient(#e6eefc,#8fa4c4)}.toe.can{background:radial-gradient(#ffd9d9,#b77)}.toe.on{box-shadow:0 0 0 2px var(--gold),0 2px 0 #000;background:radial-gradient(#ffe7a6,#c99a3a)}
+#gprev,#sfz,#susb{border-radius:12px}
+#shoes{display:flex;gap:8px;align-items:flex-end}
+.shoe{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:10px;color:#cba;background:#24150b;border:1px solid #4a2c15;border-radius:6px;padding:4px 6px}
+.shoe input{writing-mode:vertical-lr;direction:rtl;width:30px;height:84px;accent-color:#b88a3a;margin:0}.shoe span{color:var(--gold);font-size:10px}
+.lamps{display:flex;gap:2px}.lamps i{width:6px;height:6px;border-radius:50%;background:#331}.lamps i.on{background:#ff8a3a;box-shadow:0 0 4px #f80}
+#pm{margin:8px 0 0;background:none;border:none}
+.kb.pdl{height:110px;min-width:560px;transform:perspective(500px) rotateX(30deg);transform-origin:50% 0;margin:0 6% -14px}
+.pdl .w{background:linear-gradient(#e2c48e,#b08850);border-radius:0 0 4px 4px;margin:0 2px;border:1px solid #3a2412}.pdl .b{height:55%;background:linear-gradient(#4a2e18,#1a0f07)}
+.pdl .w.d{background:linear-gradient(#ffe2a0,#e7b04c)}.pdl .b.d{background:linear-gradient(#b8822c,#7a5418)}.pdl [data-l]::before{bottom:18px}
+#pmw{overflow-x:auto;overflow-y:hidden}#pmw .rail{min-width:560px;margin:0 4%}
+footer{max-width:1000px;margin:0 auto;padding:8px 14px 30px;color:#888;font-size:12px}footer h2{font-size:14px;color:#aaa}footer a{color:var(--gold)}
+#start{position:fixed;inset:0;z-index:50;background:radial-gradient(#2a170bcc,#000e);display:flex;align-items:center;justify-content:center;text-align:center;padding:20px}
+#start div{max-width:460px}#start h2{font:600 26px Georgia,serif;color:#f3d38a;margin:0 0 8px}#start p{color:#cba;line-height:1.45}
+#go{font-size:18px;padding:12px 28px;background:#7a4f14;border-color:var(--gold);border-radius:30px}
+dialog{background:#1b130c;color:#ddd;border:1px solid #6a4a20;border-radius:10px;max-width:min(620px,92vw);padding:14px 18px}dialog::backdrop{background:#000a}
+dialog h3{margin:0 0 8px;color:#f3d38a;font:600 17px Georgia,serif}#dlgx{float:right}dialog h4{color:#f3d38a;margin:10px 0 4px}dialog li{margin:3px 0}
+kbd{background:#333;border:1px solid #666;border-radius:3px;padding:0 4px;font-size:11px}
+a.buy{display:inline-block;background:#7a4f14;border:1px solid var(--gold);color:#fff;text-decoration:none;padding:8px 16px;border-radius:6px;margin:4px 0;font-weight:600}
+dialog input{background:#111;color:#eee;border:1px solid #555;border-radius:4px;padding:5px;width:240px}.err{color:#f88}.ok{color:#8f8}
+@media(min-width:1181px){.jamb{max-height:calc(100vh - 66px);overflow-y:auto;scrollbar-width:thin}#center{max-height:calc(100vh - 66px);overflow-y:auto;scrollbar-width:none}}
+@media(min-width:1181px){.kb,.rail,#pmw .rail{min-width:600px}}
+@media(min-width:1181px) and (max-height:900px){.kb{height:52px}.kb.pdl{height:72px;margin-bottom:-12px}.shoe input{height:44px}.shoe{padding:2px 4px}#desk{padding:3px 8px}#hint,#st{display:none}.man{margin-bottom:2px;padding:2px}.pist{height:17px;width:21px}.thumb{padding-top:1px}.rail{height:5px}.toe{min-width:22px;height:22px}#pedals{margin-top:2px;padding:2px 0}#lcd{font-size:11px}}
+@media(pointer:coarse){.rail{height:26px;background:repeating-linear-gradient(90deg,#1a0f07 0 10px,#2e1a0c 10px 20px)}.rail::after{content:'⇆ drag here to scroll';display:block;text-align:center;font-size:10px;line-height:26px;color:#a98}}
+@media(max-width:1180px){#console{grid-template-columns:1fr 1fr;grid-template-areas:"c c" "l r"}#jamL{grid-area:l}#jamR{grid-area:r}#center{grid-area:c;position:static}}
+@media(max-width:700px){#console{grid-template-columns:1fr;grid-template-areas:"c" "l" "r";padding:4px}.thumb{padding:2px 4px}#knee{grid-template-columns:1fr}.toes.r{justify-content:flex-start}#shoes{flex-wrap:wrap}
+.mrow{grid-template-columns:22px 1fr 0}.cheek span{display:none}header h1{font-size:15px}.ct input[type=range]{width:80px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head><body>
-<h1>Virtual Pipe Organ</h1>
-<small>5 manuals + 32-note pedalboard, ~210 stops, 25 couplers, octave couplers, tremulants, swell shoes, crescendo, sforzando, sustain, pistons, temperaments, MIDI.
-Click stops/keys, or type: lower row <b>Z S X D…</b> = pedals, upper row <b>Q 2 W 3…</b> = active manual. ↑↓ octave · ←→ swell shoe · PgUp/PgDn manual · Space sustain · Esc panic.
-Synth approximations; speakers can't reproduce 32′/64′ fundamentals. Stop-knob colours: gold principal · blue flute · green string · red reed · teal percussion. Violet = drawn by crescendo/sforzando.</small>
-<div id=bar></div><div id=gp></div><div id=now></div><div id=st></div>
-<div id=jambs></div><div id=mans></div>
-<div id=shoes></div><div class="man" id=pm><span>Pedal — AGO 32 notes C2–G4 (MIDI ch1, notes 36–67)</span><div class="kb pdl" id=pb></div></div>
-<section style="margin:18px 0;color:#888;font-size:12px;max-width:900px"><h2 style="font-size:14px;color:#aaa">About this virtual pipe organ</h2>
-<p>A free online pipe organ simulator that runs in your browser, with no download or sign-up. Play five manuals (Choir, Great, Swell, Solo and Echo) and a 32-note AGO pedalboard using the mouse, touch screen, computer keyboard or a MIDI keyboard or pedalboard. Draw more than 200 stops modelled on famous organs: Haarlem St Bavo, Hamburg St Jacobi, Paris St-Sulpice and Notre-Dame, Liverpool Cathedral, Sydney Town Hall and Atlantic City.</p>
-<p>Features: 25 couplers, sub and super octave couplers, tremulants, expressive swell shoes, a 10-step crescendo pedal, sforzando, general and divisional pistons you can set yourself, adjustable cathedral reverb, historic temperaments (Werckmeister, Kirnberger, Valotti, meantone, Pythagorean) and Web MIDI input. Works best in Chrome or Edge; sound works in Firefox and Safari too.</p>
-<p><a href="https://github.com/oaefsboe007/organ" style="color:#d9a441">Source code on GitHub</a></p></section>
+<header><h1>Virtual Pipe Organ</h1><nav>
+<button id=recb type=button title="record what you play to a WAV file">● Record</button>
+<button id=expb type=button title="save settings, registration and all pistons to a file">Save file</button>
+<button id=impb type=button title="load a registration file">Load file</button>
+<button id=setsb type=button aria-expanded=false aria-controls=bar>⚙ Settings</button>
+<button id=helpb type=button>? Help</button>
+<a id=supb class=sup target=_blank rel=noopener hidden>♥ Support</a>
+<button id=prob type=button hidden>Pro</button></nav></header>
+<section id=bar hidden aria-label=settings></section>
+<main id=console>
+<aside class=jamb id=jamL aria-label="left stop jamb"></aside>
+<div id=center>
+<div id=desk><div id=lcd><span>Memory <button id=lvlm type=button aria-label="memory level down">◀</button><b id=lvl>1</b><button id=lvlp type=button aria-label="memory level up">▶</button></span>
+<span>Cresc <b id=crd>off</b></span><span>Manual <b id=actd>Great</b></span><span>Oct <b id=octd>0</b></span><span>Transp <b id=trd>0</b></span><span id=midid></span></div>
+<div id=now role=status aria-live=polite></div><div id=hint></div><div id=st></div><div id=deskc></div></div>
+<div id=mans></div>
+<section id=pedals aria-label="pedals"><div id=knee><div class="toes" id=toeL></div><div id=shoes></div><div class="toes r" id=toeR></div></div>
+<div class=man id=pm><div id=pmw><div class=rail></div><div class="kb pdl" id=pb></div></div></div></section></div>
+<aside class=jamb id=jamR aria-label="right stop jamb"></aside>
+</main>
+<footer><h2>About this virtual pipe organ</h2>
+<p>A free online pipe organ simulator that runs in your browser, with no download or sign-up. You sit at a five-manual console: two stop jambs with more than 240 drawknobs between them, five manuals (Choir, Great, Swell, Solo and Echo) with thumb pistons, expression shoes, a crescendo pedal, toe studs and a 32-note AGO-compass pedalboard. Play with the mouse, a touch screen, the computer keyboard, or MIDI keyboards and pedalboards. Stops are modelled on famous organs: Haarlem St Bavo, Hamburg St Jacobi, Paris St-Sulpice and Notre-Dame, Liverpool Cathedral, Sydney Town Hall and Atlantic City.</p>
+<p>Features: 25 couplers, sub and super octave couplers, tremulants, a 10-step crescendo pedal, sforzando, general and divisional pistons you can set yourself, a piston sequencer, adjustable rooms from studio to great cathedral, historic temperaments (Werckmeister, Kirnberger, Vallotti, meantone, Pythagorean) and Web MIDI input with single-keyboard and split modes. Each pipe is synthesised with its own tuning, speech and wind, so the sound is not a static electronic tone. It is built for current Chrome and Edge and also runs in Firefox and Safari; Web MIDI needs Chrome, Edge or Firefox.</p>
+<p><a href="https://github.com/virtualpipeorgan/organ">Source code on GitHub</a> · <a href=# id=privl>Privacy</a> · <a href=# id=terml>Terms</a></p></footer>
+<div id=start><div><h2>Virtual Pipe Organ</h2><p id=startm>Browsers only start sound after a click or tap. Headphones or good speakers bring out the 16′ and 32′ pedal stops.</p>
+<button id=go type=button>Start the organ</button><p style="font-size:12px">On iPhone or iPad, turn off the silent switch.</p></div></div>
+<dialog id=dlg><button id=dlgx type=button aria-label=close>✕</button><h3 id=dlgt></h3><div id=dlgb></div></dialog>
+<noscript><p style="padding:20px">This organ needs JavaScript and Web Audio.</p></noscript>
 <script>
 const $=id=>document.getElementById(id),E=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e};
 const H=(n,f)=>Array.from({length:n},(_,i)=>f(i+1)),sleep=ms=>new Promise(r=>setTimeout(r,ms));
-// timbres: harmonic amplitudes, index 0 = fundamental
-const T={P:[1,.6,.35,.25,.15,.1,.07,.05],D:[1,.85,.55,.4,.28,.18,.12,.08,.05,.03],F:[1,.2,.08,.03],G:[1,.45,.18,.06,.03],
-S:[1,0,.25,0,.08,0,.03],H:[1,.4,.12,.05,.02],T:[1,.1,.28,.04,.08],J:[1,.03,.55,.02,.15,0,.05],Y:[1,.3,.1,.04],
-R:H(16,n=>n**-.6),B:H(24,n=>n**-.25),U:H(20,n=>n**-.45),O:H(24,n=>n**-.5*(1+2.2*Math.exp(-((n-6)**2)/6))),
-K:H(14,n=>n%2?n**-.45:.04/n),C:H(11,n=>n%2?n**-.5:.05),V:H(9,n=>n%2?n**-.3:.15/n),N:[1,.8,.6,.35,.22,.12,.07,.04],
-Q:H(20,n=>n<2?.4:n**-.5),E:H(28,n=>n<2?.35:n**-.33),A:[.25,1,.6,.4,.25,.15,.1,.06]};
+// timbres: harmonic amplitudes, index 0 = fundamental. Shapes follow the textbook character of each family (open flue: strong 2nd-4th,
+// stopped: odd partials with a little even, string: long slow-falling series, reeds: formant humps); a fixed per-harmonic
+// roughness (rough()) breaks the too-smooth power-law curves that make synthetic organs sound like sine/saw generators
+const rough=(a,seed)=>a.map((x,i)=>i?x*(.78+.44*(((Math.sin((i+1)*12.9898+seed*78.233)*43758.5453)%1+1)%1)):x),
+fm=(n,c,w)=>Math.exp(-((n-c)**2)/w);
+const T=Object.fromEntries(Object.entries({
+P:[1,.62,.4,.3,.19,.16,.11,.085,.065,.052,.04,.032,.025,.02,.015,.012,.009,.007],
+D:[1,.55,.3,.18,.11,.075,.05,.036,.026,.018,.012,.008,.006],
+F:[1,.3,.1,.055,.028,.017,.01,.006,.004],G:[1,.45,.22,.12,.065,.04,.025,.015,.01,.006],
+S:[1,.07,.34,.035,.13,.018,.055,.009,.022,.005,.01],H:[1,.36,.15,.075,.035,.02,.011,.006],
+T:[1,.04,.2,.02,.055,.01,.02,.005],J:[1,.1,.5,.06,.2,.035,.08,.02,.035,.01],Y:[1,.38,.17,.09,.045,.025,.012,.007],
+R:H(32,n=>n**-.62*(1+.8*fm(n,5,8))),B:H(36,n=>n**-.32*(1+.5*fm(n,8,14))),U:H(24,n=>n**-.7*(1+.6*fm(n,3,3))),
+O:H(28,n=>n**-.55*(1+2.4*fm(n,6,6))),K:H(18,n=>n%2?n**-.5:.06/n),C:H(16,n=>n%2?n**-.55:.07/n**.5),
+V:H(14,n=>(n%2?n**-.4:.18/n)*(1+1.2*fm(n,5,3))),N:H(14,n=>n**-.9*(1+.4*fm(n,3,2))),
+Q:H(32,n=>n<2?.45:n**-.55*(1+.3*fm(n,7,20))),E:H(36,n=>n<2?.38:n**-.4),A:[.3,1,.62,.44,.3,.2,.13,.09,.06,.04,.025],
+// Z: English stopped diapason, darker and rounder than the Bourdon (weaker twelfth)
+Z:[1,.05,.16,.025,.05,.01,.02,.005],
+// X: French chamade/trompette, brassier and brighter than B
+X:H(40,n=>n**-.24*(1+.6*fm(n,9,16)))
+}).map(([k,a],i)=>[k,rough(a,i+1)]));
+// speech family: 0 flue, 1 string (slow, zingy onset), 2 reed (fast, bright onset)
+const FAMC=t=>'RBUOKCVNX'.includes(t)?2:'QEA'.includes(t)?1:0;
 // struck stops: partial ratios, amplitudes, decay seconds
 const PC={chime:{p:[1,2.76,5.4,8.93],a:[.6,.5,.3,.15],d:4},glock:{p:[1,2.76,5.4],a:[1,.4,.2],d:2},celesta:{p:[1,4,9.3],a:[1,.25,.1],d:1.6},
 harp:{p:[1,2,3,4,5,6],a:[1,.6,.4,.3,.2,.1],d:2.2},xylo:{p:[1,3.9,9],a:[1,.4,.2],d:.35},marimba:{p:[1,4,10],a:[1,.3,.1],d:.8},
 vibes:{p:[1,4,10],a:[1,.2,.05],d:3},zimbel:{p:[1,2.76,5.4],a:[1,.5,.25],d:1.8}};
-const FT={64:64,32:32,'10⅔':32/3,16:16,8:8,'6⅖':6.4,'5⅓':16/3,4:4,'3⅕':3.2,'2⅔':8/3,2:2,'1⅗':1.6,'1⅓':4/3,1:1,'⅔':2/3,'½':.5};
+const FT={'1⅐':8/7,64:64,32:32,'10⅔':32/3,16:16,8:8,'6⅖':6.4,'5⅓':16/3,4:4,'3⅕':3.2,'2⅔':8/3,2:2,'1⅗':1.6,'1⅓':4/3,1:1,'⅔':2/3,'½':.5};
 // Name|footage (or ~raw pitch ratios)|timbre|gain|crescendo level (0 = colour, never auto-drawn; 10 = tutti only)|description|famous organ
 const LIST={
 P:`Untersatz|32|S|.8|10
 Contra Violone|32|E|.65|10
 Principal|32|P|.9|10|deep, singing|Hamburg St Jacobi · Schnitger 1693
 Bourdon|32|S|.9|10|fog rumble|Paris Notre-Dame · Cavaillé-Coll 1868
-Gravissima|64|S|1|10|acoustic 64′ resultant, felt more than heard
+Gravissima|64|S|1|10|64′ rumble, felt more than heard
 Bazuin|32|R|.8|10|snarling floor|Haarlem St Bavo · Müller 1738
-Posaune|32|R|.8|10|rattling bass|Hamburg St Jacobi · Schnitger 1693
+Posaune|32|U|.8|10|rattling bass|Hamburg St Jacobi · Schnitger 1693
 Contre-bombarde|32|R|.9|10|thunder|Paris St-Sulpice · Cavaillé-Coll 1862
 Contra Trombone|64|R|1|10|first full-length 64′ reed; felt not heard|Sydney Town Hall · Hill 1890
-Diaphone-Dulzian|64|R|1|10|subsonic|Atlantic City · Midmer-Losh 1932
+Diaphone-Dulzian|64|K|1|10|subsonic|Atlantic City · Midmer-Losh 1932
 Open Diapason|16|D|.8|5
 Prestant|16|P|.7|4|broad, warm foundation|Haarlem St Bavo · Müller 1738
 Violone|16|E|.6|4
 Subbass|16|S|.8|2|soft deep hum|Haarlem St Bavo · Müller 1738
+Open Wood|16|H|.85|4|huge wooden open pipes, felt as much as heard|Liverpool Cathedral · Willis 1926
+Contrabass|16|Q|.55|4
 Bourdon|16|S|.7|3
 Lieblich Gedeckt|16|S|.5|1
 Quintaton|16|J|.6|3
@@ -82,28 +181,36 @@ Fagott|16|O|.55|0
 Trombone|16|R|.75|8
 Bombarde|16|R|.8|8|massive reed|Paris St-Sulpice · Cavaillé-Coll 1862
 Ophicleide|16|B|.8|9
-Posaune|16|R|.75|8
+Posaune|16|B|.7|8
+Basson|16|U|.55|0
 Quint|10⅔|S|.5|6
+Grand Tierce|6⅖|F|.3|0
 Quint|5⅓|F|.45|7
 Octave|8|P|.7|5
 Principal|8|P|.65|5
 Cello|8|E|.5|4
 Gedeckt|8|S|.55|3
 Flute|8|F|.6|3
-Bass Flute|8|F|.6|4
+Bass Flute|8|H|.6|4
 Octave|4|P|.6|6
-Choralbass|4|P|.6|7
+Choralbass|4|D|.6|7
 Flute|4|F|.5|5
-Nachthorn|4|F|.5|6
+Nachthorn|4|T|.5|6
+Super Octave|2|P|.45|8
+Bauernflöte|1|F|.3|0|peasant flute; cantus firmus in the feet|Lübeck · North German school
 Mixture IV|~3,4,6,8|P|.3|8
 Rauschpfeife III|~3,4,6|P|.3|0
 Cornett|2|R|.4|0
 Trumpet|8|B|.6|8
+Trompette|8|X|.6|9
 Clarion|4|B|.55|9
 Schalmei|4|K|.5|0`,
 C:`Quintaton|16|J|.5|3
 Rankett|16|C|.45|0
+Sordun|16|K|.4|0|capped short-length reed; buzzy, quiet bass|Renaissance pattern
 Holzgedackt|8|S|.55|2
+Principal|8|P|.5|4
+Gemshorn|8|G|.45|2
 Dulciana|8|Y|.4|1
 Erzähler|8|E|.4|2
 Viola|8|Q|.45|3
@@ -113,13 +220,16 @@ Spillflöte|8|G|.5|3
 Principal|4|P|.55|5
 Nachthorn|4|F|.5|4
 Rohrflöte|4|J|.45|4
+Flûte d'amour|4|H|.45|3
 Fugara|4|E|.4|5
 Waldflöte|2|F|.45|6
 Octave|2|P|.45|7
+Gemshorn|2|Y|.4|5
 Nasat|2⅔|S|.4|0
 Terz|1⅗|F|.35|0
 Quinte|1⅓|F|.35|0
 Sifflöte|1|F|.3|0
+Septime|1⅐|F|.3|0|seventh-sounding mutation; dark, exotic colour|Ernst Skinner tonal school
 Sesquialtera II|~3,5|F|.4|0
 Zimbel III|~8,12,16|P|.22|8
 Scharf IV|~4,6,8,12|P|.26|7
@@ -128,12 +238,14 @@ Trechter Regal|8|R|.45|0|buzzy, nasal|Hamburg St Jacobi · Schnitger 1693
 Dulzian|8|K|.5|0
 Clarinet|8|K|.55|0
 Vox Humana|8|V|.6|0|nasal, human, wobbling|Haarlem St Bavo · Müller 1738
+Bärpfeife|8|R|.38|0|bear pipe: a muffled growl|German Baroque
 Trumpet|8|B|.55|8
 Harp|8|*harp|.8|0
 Celesta|4|*celesta|.7|0
 Marimba|8|*marimba|.8|0
 Zimbelstern|~1|*zimbel|.5|0`,
 G:`Double Open Diapason|16|D|.75|6
+Principal|16|P|.65|5
 Bourdon|16|S|.65|3
 Violone|16|E|.55|4
 Quintaton|16|J|.55|0
@@ -146,19 +258,21 @@ Flûte harmonique|8|F|.7|3|round, singing|Paris St-Sulpice · Cavaillé-Coll 186
 Hohlflöte|8|H|.6|3
 Rohrflöte|8|J|.55|3
 Bourdon|8|S|.6|2
-Stopped Diapason|8|S|.6|2
-Doppelflöte|8|F|.7|4
+Stopped Diapason|8|Z|.6|2
+Doppelflöte|8|H|.7|4
 Claribel Flute|8|F|.6|3
 Quint|5⅓|S|.45|6
+Gross Quint|10⅔|S|.35|0
+Gross Tierce|3⅕|F|.3|0|the grand cornet colour, an octave below the Tierce|French Classical
 Octave|4|P|.6|6
 Principal|4|P|.55|6
 Spitzflöte|4|G|.5|5
 Rohrflöte|4|J|.5|5
 Koppelflöte|4|H|.5|5
-Gemshorn|4|G|.5|4
+Gemshorn|4|Y|.5|4
 Nasard|2⅔|S|.4|0
 Super Octave|2|P|.5|7
-Fifteenth|2|P|.5|7
+Fifteenth|2|D|.5|7
 Blockflöte|2|F|.45|0
 Tierce|1⅗|F|.35|0
 Larigot|1⅓|F|.35|0
@@ -171,13 +285,16 @@ Plein Jeu V|~2,3,4,6,8|P|.3|0
 Fourniture IV|~4,6,8,12|P|.28|8
 Scharff|~6,8,12|P|.25|0|piercing, glassy top|Hamburg St Jacobi · Schnitger 1693
 Cymbal III|~8,12,16|P|.22|9
+Grosse Fourniture II|~2,3|P|.32|0
 La Force|~.5,1,1.25,1.5,2,2.5,3,4|P|.25|0|one key, 49 pipes, chord roar|Weingarten · Gabler 1750
 Trumpet|8|B|.6|7
 Tromba|8|R|.7|8
-Trompette en chamade|8|B|.6|9|horizontal brass blaze|Paris Notre-Dame · Cavaillé-Coll 1868
-Trompette Militaire|8|B|.7|0|brilliant, cutting|Liverpool Cathedral · Willis 1926
+Trompette en chamade|8|X|.6|9|horizontal brass blaze|Paris Notre-Dame
+Trompette Militaire|8|B|.7|0|brilliant, cutting|Liverpool Cathedral
+Harmonic Trumpet|8|X|.68|0|double-length resonators; brilliant and steady|Cavaillé-Coll
 Batalla en chamada|~1,2|B|.5|0|fierce Iberian rasp|Toledo Cathedral
 Posaune|16|R|.65|9
+Bombarde|16|R|.7|10
 Clarion|4|B|.55|9`,
 W:`Bourdon|16|S|.6|3
 Lieblich Bourdon|16|S|.5|2
@@ -185,7 +302,8 @@ Contra Gamba|16|E|.45|3
 Geigen Principal|8|P|.6|4
 Open Diapason|8|D|.65|5
 Rohrflöte|8|J|.5|3
-Stopped Diapason|8|S|.5|2
+Flûte traversière|8|F|.55|3|harmonic, breathy, like an orchestral flute|Paris La Madeleine · Cavaillé-Coll
+Stopped Diapason|8|Z|.5|2
 Lieblich Gedeckt|8|S|.45|2
 Salicional|8|Q|.4|2
 Viole de gambe|8|E|.45|3
@@ -195,55 +313,69 @@ Aeoline|8|A|.35|1
 Vox Angelica 8′|~1.005|A|.35|1
 Octave|4|P|.5|6
 Fugara|4|E|.4|5
-Violina|4|E|.4|5
+Violina|4|Q|.4|5
 Flûte octaviante|4|F|.5|5
 Nazard|2⅔|F|.35|0
 Octavin|2|P|.45|7
 Flautino|2|F|.4|6
+Larigot|1⅓|F|.3|0
+Piccolo|1|F|.3|0
 Tierce|1⅗|F|.3|0
 Mixture III|~3,4,6|P|.3|7
 Plein Jeu III-V|~4,6,8,12|P|.28|8
+Cornet V|~1,2,3,4,5|F|.3|0|cornet de récit; solo voice of French Classical music|French Classical
+Cymbale III|~8,12,16|P|.2|9
 Contra Fagotto|16|O|.55|7
 Double Trumpet|16|B|.6|9
 Trumpet|8|B|.65|7
 Cornopean|8|R|.65|6
-Trompette|8|B|.65|8
+Trompette|8|X|.65|8
 Hautbois|8|O|.5|4
-Basson|8|O|.5|5
+Basson|8|U|.5|5
 Cor anglais|8|O|.45|0
 Clarinet|8|K|.5|0
 Voix humaine|8|V|.5|0|veiled|Paris St-Sulpice · Cavaillé-Coll 1862
+Vox Humana|16|V|.45|0
 Clairon|4|B|.55|9
 Hautbois Clarion|4|O|.45|0`,
 S:`Stentorphone|8|D|.85|7
 Gross Gamba|8|E|.6|4
+Viole d'orchestre|8|Q|.5|0|very thin, very keen string|Skinner orchestral organ
+Viole céleste 8′|~1.007|Q|.5|0
 Concert Flute|8|F|.7|3
 Solo Harmonic Flute|8|F|.75|4
 Harmonic Flute|4|F|.6|5
+Flauto Mirabilis|8|F|.8|0|a flute almost as loud as a trumpet|Hope-Jones
+Harmonic Piccolo|2|F|.5|0
 Tibia Clausa|8|T|.7|0|hooty, sobbing theatre flute|Radio City Music Hall · Wurlitzer 1932
 Tibia Clausa|4|T|.6|0
 Tibia Plena|8|T|.8|0
+Tibia Clausa|16|T|.75|0
+Tibia Clausa|2|T|.5|0
 String Organ 8′|~1,1.004|Q|.45|0|88 ranks; orchestral shimmer|Philadelphia Wanamaker · 1904
 Orchestral Oboe|8|O|.6|0
 English Horn|8|O|.55|0
 Clarinet|8|K|.6|0
 Corno di Bassetto|8|K|.55|0
 French Horn|8|N|.65|0
+Saxophone|8|C|.55|0
+Kinura|8|V|.42|0|thin, buzzing theatre-organ reed|Wurlitzer theatre organ
 Orchestral Trumpet|8|B|.65|0
 Tuba Mirabilis|8|U|.9|8
 Tuba Mirabilis|16|U|.85|9
 Tuba Clarion|4|U|.8|9
+Tuba Sonora|8|N|.75|8
 Tuba Magna|8|R|.8|0|searing, heroic|Liverpool Cathedral · Willis 1926
 Royal Trumpets|8|B|.7|0|west-end fanfare (Mander 1977)|London St Paul's · Willis 1872
 Grand Ophicleide|16|B|1|10|100″ wind; loudest stop on earth|Atlantic City · Midmer-Losh 1932
-Chamade|8|B|.65|9
+Chamade|8|X|.65|9
 Chamade Clarion|4|B|.6|10
 Chimes|8|*chime|.6|0
 Glockenspiel|2|*glock|.6|0
 Xylophone|4|*xylo|.7|0`,
 E:`Echo Diapason|8|D|.45|3
 Echo Bourdon|8|S|.4|1
-Echo Gedeckt|8|S|.4|1
+Echo Gedeckt|8|Z|.4|1
 Echo Dulciana|8|Y|.35|1
 Echo Salicional|8|Q|.35|1
 Echo Viol|8|E|.35|2
@@ -251,15 +383,21 @@ Echo Celeste 8′|~1.006|Q|.35|2
 Vox Angelica 8′|~1.005|A|.3|1
 Echo Principal|4|P|.4|4
 Echo Flute|4|F|.4|3
+Echo Fifteenth|2|P|.35|6
 Echo Nazard|2⅔|F|.3|0
 Echo Piccolo|2|F|.35|5
 Echo Cornet III|~2,3,5|F|.3|0
+Echo Mixture III|~4,6,8|P|.22|0
 Echo Oboe|8|O|.4|3
 Echo Clarinet|8|K|.4|0
 Echo Trumpet|8|B|.45|6
+Echo Horn|8|N|.4|0
+Echo Tuba|8|U|.45|0
 Vox Humana|8|V|.5|0|legend: most human|Weingarten · Gabler 1750
 Nachtigall|~4,4.02|F|.3|0|birdsong warble|Weingarten · Gabler 1750
 Vibraphone|8|*vibes|.7|0
+Echo Harp|8|*harp|.55|0
+Echo Chimes|8|*chime|.4|0
 Cymbelstern|~1|*zimbel|.5|0`};
 // id, name, lowest MIDI, highest MIDI, pan, volume, enclosed (swell box)
 const DIV=[['P','Pedal',36,67,0,1,0],['C','Choir',36,96,-.35,.9,1],['G','Great',36,96,0,1,0],['W','Swell',36,96,.35,1,1],['S','Solo',36,96,.15,1.1,1],['E','Echo',36,96,-.15,.6,1]]
@@ -271,70 +409,204 @@ s.label=nm+(raw?'':' '+ft+'′');ALL.push(s);return s})}
 for(const t of DIV)for(const f of DIV)if(f!==t&&f.id!='P')CPL[f.id+'>'+t.id]={'G>P':5,'W>P':6,'C>P':7,'S>P':8,'W>G':6,'C>G':7,'S>G':8}[f.id+'>'+t.id]||0;
 // tunings: cents from equal temperament, root C
 const TP={'Equal':[0,0,0,0,0,0,0,0,0,0,0,0],'Werckmeister III':[0,-9.8,-7.8,-5.9,-9.8,-2,-11.7,-3.9,-7.8,-11.7,-3.9,-7.8],
-'Kirnberger III':[0,-9.8,-6.8,-5.9,-13.7,-2,-9.8,-3.2,-7.8,-10.3,-3.9,-11.7],'Valotti':[0,-5.9,-3.9,-2,-7.8,1.9,-7.8,-2,-3.9,-5.9,0,-9.8],
+'Kirnberger III':[0,-9.8,-6.8,-5.9,-13.7,-2,-9.8,-3.2,-7.8,-10.3,-3.9,-11.7],'Vallotti':[0,-5.9,-3.9,-2,-7.8,1.9,-7.8,-2,-3.9,-5.9,0,-9.8],
 'Quarter-comma meantone':[0,-24,-6.8,10.3,-13.7,3.4,-20.5,-3.4,-27.4,-10.3,6.8,-17.1],'Pythagorean':[0,13.7,3.9,-5.9,7.8,-2,11.7,2,-7.8,5.9,-3.9,9.8]};
-let A,M,RV,WG,NZ,CR=0,SFZ=0,TR=0,A4=440,TUN='Equal',RT=3,RM=.5,CHIFF=.5,TRATE=5.5,TD=.18,SETM=0,TS=null,run=0,sus=0,nosc=0,shoe='W',ACT=DV.G,OCT=0;
-const NMAX=1600,V=new Map,held=new Set,PSK='organ-pistons-v2';
-let PS={};try{PS=JSON.parse(localStorage.getItem(PSK)||'{}')}catch(e){}
+let A,M,RV,WG,NZ,irT,LATCH=0,CR=0,SFZ=0,TR=0,A4=440,TUN='Equal',RT=3,RM=.5,CHIFF=.5,TRATE=5.5,TD=.18,SETM=0,TS=null,run=0,sus=0,nosc=0,shoe='W',ACT=DV.G,OCT=0;
+let CHAR=.6,OB=900,ROOM='Church';const OBMAX=1400,PMAX=96,STK=[];
+const NMAX=4000,P=new Map,KS=new Map,KD={};
+// deterministic per-pipe random in [-1,1): each pipe keeps its own small tuning/regulation error, like a real instrument
+const hsh=(...a)=>{let h=2166136261;for(const x of a){h^=x*2654435761>>>0;h=Math.imul(h,16777619)>>>0}h^=h>>>13;h=Math.imul(h,1274126177)>>>0;return((h^h>>>16)>>>0)/2147483648-1};
 const isOn=s=>s.on||(s.lvl>0&&s.lvl<=(SFZ?10:CR)),cpOn=k=>CP[k]||(CPL[k]>0&&CPL[k]<=(SFZ?10:CR)),
 fq=m=>{const p=TP[TUN];return A4*2**((m-69)/12)*2**((p[(m%12+12)%12]-p[9])/1200)};
 // ---------- audio
-function ir(){const sr=A.sampleRate,n=sr*RT|0,b=A.createBuffer(2,n,sr);for(let c=0;c<2;c++){const d=b.getChannelData(c);let lp=0;
-for(let i=0;i<n;i++){lp+=(Math.random()*2-1-lp)*(.9-.8*i/n);d[i]=i<sr*.02?0:lp*Math.exp(-6.9*i/n)}}return b}
-function init(){if(A){A.state=='suspended'&&A.resume();return}A=new AudioContext();const c=A.createDynamicsCompressor();c.threshold.value=-22;c.knee.value=14;c.ratio.value=6;c.release.value=.25;
-M=A.createGain();M.gain.value=+$('vol').value/100;M.connect(c);c.connect(A.destination);RV=A.createConvolver();WG=A.createGain();WG.gain.value=RM;RV.connect(WG);WG.connect(M);RV.buffer=ir();
-NZ=A.createBuffer(1,A.sampleRate*.2|0,A.sampleRate);NZ.getChannelData(0).forEach((_,i,d)=>d[i]=Math.random()*2-1);
+// room impulse: pre-delay, a cluster of early reflections that differ per ear, then a diffuse tail whose highs die first
+function ir(){const sr=A.sampleRate,n=Math.max(sr*RT|0,sr*.3|0),b=A.createBuffer(2,n,sr),pre=sr*(.008+RT*.004)|0;
+for(let c=0;c<2;c++){const d=b.getChannelData(c);let lp=0;
+for(let i=pre;i<n;i++){lp+=(Math.random()*2-1-lp)*(.92-.86*i/n);d[i]=lp*Math.exp(-6.9*i/n)*Math.min(1,(i-pre)/(sr*.05))}
+for(let j=0;j<16;j++){const at=pre+((.003+Math.random()*(.02+RT*.02))*sr|0);if(at<n)d[at]+=(Math.random()<.5?-1:1)*(.55-.03*j)}}return b}
+const ROOMS={Studio:[.6,.15],Chapel:[1.6,.35],Church:[3.2,.5],Cathedral:[5.5,.62],'Great cathedral':[8.5,.72]};
+let BRB,ACTX=window.AudioContext||window.webkitAudioContext,lastA=0,lastW=0,LOAD=1;
+function init(){if(A){A.state!='running'&&A.resume().catch(()=>{});return}
+if(!ACTX){fail('This browser has no Web Audio support. Please use a current Chrome, Edge, Firefox or Safari.');return}
+try{if(navigator.audioSession)navigator.audioSession.type='playback'}catch(x){} // iOS Safari 16.4+: play even with the silent switch on
+try{A=new ACTX({latencyHint:'interactive'})}catch(x){fail('Audio could not start: '+x.message);return}
+const c=A.createDynamicsCompressor();c.threshold.value=-12;c.knee.value=10;c.ratio.value=3;c.release.value=.25;
+M=A.createGain();M.gain.value=window.MUTE?0:+$('vol').value/100;const trim=A.createGain();trim.gain.value=window.TRIM||.17;M.connect(trim);trim.connect(c); // headroom: one stop sits low so a full organ can grow ~15 dB above it
+const lim=A.createDynamicsCompressor();lim.threshold.value=-3;lim.knee.value=0;lim.ratio.value=20;lim.attack.value=.002;lim.release.value=.1;c.connect(lim);lim.connect(A.destination);REC.tap=lim;RV=A.createConvolver();WG=A.createGain();WG.gain.value=RM;RV.connect(WG);WG.connect(M);RV.buffer=ir();
+const sr=A.sampleRate;NZ=A.createBuffer(1,sr*2|0,sr);NZ.getChannelData(0).forEach((_,i,d)=>d[i]=Math.random()*2-1);
+{BRB=A.createBuffer(1,sr*2,sr);const d=BRB.getChannelData(0),x=NZ.getChannelData(0),w=2*Math.PI*1000/sr,al=Math.sin(w)/(2*1.4),a0=1+al,b0=al/a0,a1=-2*Math.cos(w)/a0,a2=(1-al)/a0;
+let x1=0,x2=0,y1=0,y2=0;for(let k=0;k<2;k++)for(let i=0;i<d.length;i++){const xi=x[i],y=b0*xi-b0*x2-a1*y1-a2*y2;x2=x1;x1=xi;y2=y1;y1=y;d[i]=y}} // second pass = steady-state, so the loop seam is continuous
+// wind: slow random sway of the wind pressure (a smoothed random walk, ~0.2-3 Hz), one per division
+const WN=A.createBuffer(1,sr*8,sr),wd=WN.getChannelData(0);{let v=0,s=0;for(let i=0;i<wd.length;i++){v+=(Math.random()*2-1)*.02-v*.0004;s+=(v-s)*.0006;wd[i]=s}let mx=1e-9;for(const x of wd)mx=Math.max(mx,Math.abs(x));for(let i=0;i<wd.length;i++)wd[i]/=mx}
 for(const D of DIV){D.tr=A.createGain();D.ex=A.createGain();D.lp=A.createBiquadFilter();D.lp.type='lowpass';D.lp.frequency.value=18000;D.pn=A.createStereoPanner();D.pn.pan.value=D.pan;
 D.out=A.createGain();D.out.gain.value=D.vol;D.tr.connect(D.ex);D.ex.connect(D.lp);D.lp.connect(D.pn);D.pn.connect(D.out);D.out.connect(M);D.out.connect(RV);
+// pipes stand on a C side and a C♯ side of the chest (whole-tone halves), so neighbouring notes come from opposite sides
+D.wd=A.createGain();D.wd.connect(D.tr);const spr=D.id=='P'?.5:.28;D.sA=A.createStereoPanner();D.sB=A.createStereoPanner();D.sA.pan.value=-spr;D.sB.pan.value=spr;D.sA.connect(D.wd);D.sB.connect(D.wd);
+D.wl=A.createBufferSource();D.wl.buffer=WN;D.wl.loop=1;D.wl.playbackRate.value=.8+D.i*.07;D.wlg=A.createGain();D.wl.connect(D.wlg);D.wlg.connect(D.wd.gain);D.wl.start(0,D.i*1.3);
+// wind channels: NJ independent slow wanders per division (like separate grooves of the chest). Each pipe follows one of them
+// in pitch (cents) and level, so the pipes of a chord drift apart a little and beat against each other instead of moving in lockstep
+D.jg=[];D.ja=[];for(let j=0;j<NJ;j++){const s=A.createBufferSource();s.buffer=WN;s.loop=1;s.playbackRate.value=1.1+j*.29+D.i*.05;
+const gp=A.createGain(),ga=A.createGain();gp.gain.value=ga.gain.value=0;s.connect(gp);s.connect(ga);s.start(0,(j*1.9+D.i*.7)%7.5);D.jg.push(gp);D.ja.push(ga)}
 D.lf=A.createOscillator();D.lf.frequency.value=TRATE*(1+D.i*.03);D.td=A.createGain();D.lf.connect(D.td);D.td.connect(D.tr.gain);D.lf.start();trem(D);applyExp(D)}
-setInterval(zim,230)}
+setChar(CHAR);A.onstatechange=()=>$('start')&&A.state=='running'&&hideStart();
+setInterval(zim,230);setInterval(meter,500);warm()}
+const NJ=5,WMAX=200;let JL=0; // wander only on the first WMAX voices: in bigger clusters it is masked and would cost audio time
+function setChar(v){CHAR=v;if(A)for(const D of DIV){D.wlg.gain.value=.012*v;D.jg.forEach(g=>g.gain.value=1.6*v);D.ja.forEach(g=>g.gain.value=.05*v)}}
+// connect a wander channel to an AudioParam; returns an undo, called when the pipe has stopped so no stale connection stays alive
+const jit=(src,prm)=>{src.connect(prm);JL++;let d=0;return()=>{if(d)return;d=1;JL--;try{src.disconnect(prm)}catch(x){}}};
+// audio-thread load guard: if the audio clock falls behind the wall clock, newly sounding pipes merge their ranks
+// into fewer oscillators (same pitches and loudness, less ensemble shimmer) so every key keeps sounding without dropouts
+function meter(){if(!A||A.state!='running'||document.hidden){lastA=0;return}const w=performance.now(),a=A.currentTime;
+if(lastA){LOAD=(a-lastA)/((w-lastW)/1000);if(nosc>60&&LOAD<.97)OB=Math.max(150,Math.round(nosc*.8));else if(LOAD>.995&&OB<OBMAX)OB=Math.min(OBMAX,OB+40)}lastA=a;lastW=w}
 function applyExp(D){if(!A||!D.box)return;const e=D.exp,t=A.currentTime;D.ex.gain.setTargetAtTime(.1+.9*e**1.5,t,.03);D.lp.frequency.setTargetAtTime(300*60**e,t,.03)}
 function trem(D){D.tb&&D.tb.classList.toggle('on',!!D.trem);D.td&&(D.td.gain.value=D.trem?TD:0)}
-function build(D){D.dirty=0;const W=new Map;let tot=0;D.perc=[];
-for(const s of D.stops){if(!isOn(s))continue;if(s.perc){D.perc.push(s);continue}tot+=s.g;const w=s.g/Math.sqrt(s.ranks.length);
-for(const r of s.ranks){let c=W.get(r);if(!c)W.set(r,c=new Float32Array(33));T[s.t].forEach((x,h)=>c[h+1]+=x*w)}}
-const k=.55/Math.sqrt(tot||1);let mn=8;
-D.groups=[...W].map(([r,c])=>{const im=c.map(x=>x*k);mn=Math.min(mn,r);
+const IMN=41,BRT={F:1,S:1,H:1,T:.8,J:.9,G:.8,Y:.7,P:.5,D:.5,Q:.3,E:.3,A:.4,Z:1};
+function build(D){D.dirty=0;const sig=D.stops.filter(isOn).map(s=>s.id)+'|'+TUN+A4+CHAR;if(sig===D.sig&&D.mc)return;D.sig=sig;D.gen=(D.gen||0)+1;D.mc=new Map;D.me=new Map;D.wc=new Map;const W=new Map;let tot=0,br=0;D.perc=[];
+D.bk=[0,1,2].map(()=>({s:0,w:0,lo:8}));
+for(const s of D.stops){if(!isOn(s))continue;if(s.perc){if(s.t!='*zimbel')D.perc.push(s);continue}tot+=s.g;br+=s.g*(BRT[s.t]||0);const w=s.g/Math.sqrt(s.ranks.length),f=FAMC(s.t);
+for(const r of s.ranks){const b=f==2?2:r>1?1:0,key=b+'|'+r,bk=D.bk[b];bk.w+=w;if(f==1)bk.s+=w;bk.lo=Math.min(bk.lo,r);
+let c=W.get(key);if(!c)W.set(key,c={r,b,c:new Float32Array(IMN)});T[s.t].forEach((x,h)=>c.c[h+1]+=x*w)}}
+for(const bk of D.bk)bk.s=bk.w?bk.s/bk.w:0;
+const k=.5/(tot||1)**(window.KEXP||.15);let mn=8;D.br=tot?br/tot:0;D.k=k;
+D.groups=[...W.values()].map(({r,b,c},gi)=>{const im=c.map(x=>x*k);mn=Math.min(mn,r);
 if(r<=.25){const o=im[1];im[1]=o*.4;im[2]=Math.max(im[2],o*.8);im[3]=Math.max(im[3],o*.55);im[4]=Math.max(im[4],o*.35)} // 32′/64′: lean on harmonics a speaker can reproduce
-return{r,w:A.createPeriodicWave(new Float32Array(33),im,{disableNormalization:true})}});
-D.att=mn<=.25?.09:mn<=.5?.05:.025;D.rel=mn<=.5?.4:.2}
-function strike(s,f0,D,t,g=1){const p=PC[s.t.slice(1)],base=f0*s.ranks[0];p.p.forEach((q,i)=>{let f=base*q;while(f>9000)f/=2;const o=A.createOscillator(),e=A.createGain(),d=p.d/(1+i*.5);
-o.frequency.value=f;e.gain.setValueAtTime(p.a[i]*s.g*.5*g,t);e.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(e);e.connect(D.tr);o.start(t);o.stop(t+d+.1)})}
-function zim(){if(!A)return;for(const s of ALL)if(s.t=='*zimbel'&&isOn(s)&&Math.random()<.6){const D=s.d;if(D.dirty)build(D);strike(s,[2093,2349,2637,3136,3520,4186][Math.random()*6|0],D,A.currentTime,.6)}}
-function start(S,n){const t=A.currentTime,v={S,n,gs:[],os:[],dn:1,rel:.2};
-for(const D of DIV){if(D!==S&&!cpOn(D.id+'>'+S.id))continue;if(D.dirty)build(D);if(!D.groups.length&&!D.perc.length)continue;
-for(const off of [...(D.uoff?[]:[0]),...(D.sub?[-12]:[]),...(D.sup?[12]:[])]){const m=n+off+TR;if(m<12||m>120)continue;
-const g=A.createGain(),f0=fq(m);g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(1,t+D.att);g.connect(D.tr);v.gs.push(g);v.rel=Math.max(v.rel,D.rel);
-for(const{r,w}of D.groups){let f=f0*r;while(f>7000)f/=2;const o=A.createOscillator();o.setPeriodicWave(w);o.frequency.value=f;o.connect(g);o.start(t);o.onended=()=>nosc--;nosc++;v.os.push(o)}
-for(const s of D.perc)strike(s,f0,D,t)}}
-if(CHIFF>0&&S.groups.length){const nb=A.createBufferSource(),bp=A.createBiquadFilter(),cg=A.createGain();nb.buffer=NZ;bp.type='bandpass';bp.frequency.value=Math.min(6000,Math.max(600,fq(n+TR)*4));bp.Q.value=3;
-cg.gain.setValueAtTime(CHIFF*.4,t);cg.gain.exponentialRampToValueAtTime(.001,t+.06);nb.connect(bp);bp.connect(cg);cg.connect(S.tr);nb.start(t);nb.stop(t+.1)}
-return v}
-function fade(v,r){const t=A.currentTime;for(const g of v.gs){g.gain.cancelScheduledValues(t);g.gain.setValueAtTime(g.gain.value,t);g.gain.linearRampToValueAtTime(0,t+r)}v.os.forEach(o=>o.stop(t+r+.05))}
-const hl=(S,n,x)=>S.keys[n]&&S.keys[n].classList.toggle('d',!!x);
-function press(S,n){init();const k=S.i+':'+n,o=V.get(k);if(o){if(o.dn)return;V.delete(k);held.delete(k);fade(o,.05)}
-if(nosc>NMAX){let c=V.size>>2||1;for(const[k2,v]of V){V.delete(k2);held.delete(k2);fade(v,.05);hl(v.S,v.n,0);if(--c<=0)break}}
-V.set(k,start(S,n));hl(S,n,1)}
-function release(S,n,force){const k=S.i+':'+n,v=V.get(k);if(!v)return;v.dn=0;hl(S,n,0);if(sus&&!force){held.add(k);return}V.delete(k);held.delete(k);fade(v,v.rel)}
-function setSus(x){sus=x;$('susb').classList.toggle('on',!!x);if(!x){for(const k of [...held]){const v=V.get(k);if(v&&!v.dn){V.delete(k);fade(v,v.rel)}held.delete(k)}}}
-function revoice(){if(!A)return;for(const[k,v]of [...V])if(v.dn){V.delete(k);fade(v,.05);V.set(k,start(v.S,v.n))}}
-function halt(){run++;if(A)for(const[,v]of V){fade(v,.05);hl(v.S,v.n,0)}V.clear();held.clear();$('now').textContent='';if(TS){setReg(TS);TS=null}}
+return{r,b,gi,im}});
+D.rel=mn<=.5?.4:.2}
+const PW=im=>A.createPeriodicWave(new Float32Array(im.length),im,{disableNormalization:true}),gcd=(a,b)=>b?gcd(b,a%b):a,
+ro=f=>1/(1+(f/6500)**2); // pipes lose their top partials gently; treble pipes therefore carry fewer harmonics than bass pipes
+// mem: [{q,im}] ranks at q × the base frequency fb; summed into one band-limited wave, cached per division
+const mixIm=(fb,mem)=>{const im=new Float32Array(Math.max(...mem.map(x=>x.q))*(IMN-1)+1);for(const{q,im:c}of mem)for(let h=1;h<c.length;h++)if(c[h])im[h*q]+=c[h]*ro(fb*h*q);return im};
+function mkw(D,key,fb,mem){let w=D.wc.get(key);if(!w)D.wc.set(key,w=PW(mixIm(fb,mem)));return w}
+// oscillator set for one pipe (division D, MIDI note m). Ranks break back below 7 kHz. Harmonically related ranks of the same
+// speech group (0 foundation flues, 1 upperwork, 2 reeds) are summed into ONE periodic wave; each group gets its own oscillator,
+// tuning error and attack, which gives the chorus of a real plenum. Detuned ranks (celestes) keep their own oscillator.
+// Under audio overload (nosc > OB) all groups merge into one oscillator.
+function waves(D,m){const eco=nosc>OB,c=eco?D.me:D.mc;let x=c.get(m);if(x)return x;
+const f0=440*2**((m-69)/12),bd=m/6|0,fb=440*2**((bd*6+2.5-69)/12),mix=[[],[],[]];x=[];
+for(const g of D.groups){let r=g.r;while(f0*r>7000)r/=2;const b=eco?0:g.b,u=r*64;
+if(Math.abs(u-Math.round(u))<1e-6)mix[b].push({u:Math.round(u),g});else x.push({r,b,w:mkw(D,bd+'s'+g.gi+'/'+r,fb*r,[{q:1,im:g.im}])})}
+mix.forEach((mx,b)=>{if(!mx.length)return;const gd=mx.reduce((a,{u})=>gcd(a,u),0);
+if(Math.max(...mx.map(q=>q.u/gd))*(IMN-1)+1<=4097)x.push({r:gd/64,b,w:mkw(D,bd+'|'+gd+'|'+mx.map(q=>q.g.gi+':'+q.u).join(),fb*gd/64,mx.map(q=>({q:q.u/gd,im:q.g.im})))});
+else for(const q of mx)x.push({r:q.u/64,b,w:mkw(D,bd+'s'+q.g.gi+'/'+q.u,fb*q.u/64,[{q:1,im:q.g.im}])})});
+c.set(m,x);return x}
+// struck stops: each timbre is rendered once per octave into a buffer and replayed pitch-shifted (2 nodes per strike instead of 2 per partial)
+const PCB=new Map;
+function pcb(ty,oc){const key=ty+oc;let b=PCB.get(key);if(b)return b;const p=PC[ty],ref=16.3516*2**oc,sr=A.sampleRate,len=Math.ceil((p.d+.05)*sr);
+b=A.createBuffer(1,len,sr);const x=b.getChannelData(0);
+p.p.forEach((q,i)=>{let fr=ref*q;while(fr>9000)fr/=2;const d=p.d/(1+i*.5),r=(.0001/p.a[i])**(1/(d*sr)),w=2*Math.PI*fr/sr,c=r*Math.cos(w),sn=r*Math.sin(w),n=Math.min(len,Math.ceil(d*sr));
+let re=p.a[i],im=0;for(let j=0;j<n;j++){x[j]+=im;const t=re*c-im*sn;im=re*sn+im*c;re=t}}); // decaying sine by complex rotation
+PCB.set(key,b);return b}
+function strike(s,f0,D,t,g=1){const f=f0*s.ranks[0],oc=Math.floor(Math.log2(f/16.3516)),src=A.createBufferSource(),e=A.createGain();
+src.buffer=pcb(s.t.slice(1),oc);src.playbackRate.value=f/(16.3516*2**oc);e.gain.value=s.g*.5*g;src.connect(e);e.connect(D.tr);src.start(t);
+// cap ringing strikes: beyond PMAX the oldest is damped, so a forearm across a harp/chime registration can't overload audio
+const end=t+src.buffer.duration/src.playbackRate.value;for(let i=STK.length-1;i>=0;i--)if(STK[i].end<t)STK.splice(i,1);
+STK.push({src,e,end});while(STK.length>PMAX){const o=STK.shift();o.e.gain.setTargetAtTime(0,t,.015);try{o.src.stop(t+.1)}catch(x){}}}
+// pre-render drawn percussion stops in idle time so the first chord doesn't stall
+const idle=window.requestIdleCallback||(f=>setTimeout(()=>f({timeRemaining:()=>8}),50));
+function warm(){if(!A)return;const todo=[];for(const s of ALL)if(s.perc&&isOn(s))for(let oc=1;oc<10;oc++)if(!PCB.has(s.t.slice(1)+oc))todo.push([s.t.slice(1),oc]);
+const step=dl=>{while(todo.length&&dl.timeRemaining()>2)pcb(...todo.pop());todo.length&&idle(step)};todo.length&&idle(step)}
+function zim(){if(!A||A.state!='running')return;for(const s of ALL)if(s.t=='*zimbel'&&isOn(s)&&Math.random()<.6){const D=s.d;if(D.dirty)build(D);strike(s,[2093,2349,2637,3136,3520,4186][Math.random()*6|0],D,A.currentTime,.6)}}
+// Pipes P: one sounding voice per (division, MIDI note), shared by every key/coupler that draws it (refcounted).
+// Keys KS: one entry per physical key, with a set of holders (pointer id, computer key, MIDI channel, latch, sustain),
+// so any number of keys can be down at once and one input releasing never cuts a note another input still holds.
+function pipeOn(D,m,t,art){const k=D.i+':'+m;let p=P.get(k);if(p&&p.gen===D.gen){p.refs++;return p}
+const f0=fq(m);p={k,gen:D.gen,refs:1,os:[],gs:[],un:[],rel:D.rel};
+if(D.groups.length){const side=m%2?D.sB:D.sA,gs=[],wv=CHAR>0&&nosc<Math.min(OB,WMAX)&&!window.WOFF,ch=(x,b)=>D[x][(hsh(D.i,m,b,j,x=='jg'?5:9)+1)*NJ/2|0]||D[x][0];let j=0;
+for(const{r,w,b}of waves(D,m)){const bk=D.bk[b];let g=gs[b];
+// pipe speech: bass pipes speak slower; strings slower still; reeds snap on with a bright overshoot; each pipe has its own
+// regulation (level) and tuning error, and flues settle up to pitch while speaking (reeds settle down)
+const sp=Math.min(2.6,Math.max(.4,(262/(f0*bk.lo))**.35)),att=[.032,.02,.011][b]*sp*(1+bk.s*.8);
+if(!g){g=gs[b]=A.createGain();const lv=1+.07*CHAR*hsh(D.i,m,b,7),pk=lv*(1+CHAR*[.1,.18,.3][b]*(1-bk.s*.5));
+g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(pk,t+att);g.gain.linearRampToValueAtTime(lv,t+att+[.12,.08,.07][b]*sp);g.connect(side);p.gs.push(g);
+if(wv)p.un.push(jit(ch('ja',b),g.gain))}
+const o=A.createOscillator(),dt=CHAR*[2.2,3,1.6][b]*hsh(D.i,m,b,j++);o.setPeriodicWave(w);o.frequency.value=f0*r;
+o.detune.setValueAtTime(dt+CHAR*(b==2?5:-9*(1+bk.s)),t);o.detune.linearRampToValueAtTime(dt,t+att*(b==2?2:1.6));
+if(wv)try{o.detune.automationRate='k-rate'}catch(x){}const un=wv?jit(ch('jg',b),o.detune):null;o.connect(g);o.start(t);o.onended=()=>{nosc--;un&&un()};nosc++;p.os.push(o)}}
+if(art)for(const s of D.perc)strike(s,f0,D,t);
+P.set(k,p);return p}
+function fadeP(p,r){const t=A.currentTime;for(const g of p.gs){g.gain.cancelScheduledValues(t);g.gain.setValueAtTime(g.gain.value,t);g.gain.linearRampToValueAtTime(0,t+r)}p.os.forEach(o=>o.stop(t+r+.05));p.os=[];p.gs=[];const un=p.un;p.un=[];un.length&&setTimeout(()=>un.forEach(f=>f()),(r+.15)*1000)}
+// breath: the wind noise at the pipe mouth, strongest in flutes. One looping noise buffer, band-passed once around 1 kHz,
+// is replayed per key at a rate that moves the band to twice the key's pitch (2 cheap nodes, no per-key filter).
+// Only the first BMAX sounding keys breathe: in bigger chords it is masked anyway and it would cost audio time.
+const BMAX=32;let nbr=0;
+var breath=function(S,n,lvl){if(!lvl||CHAR<=0||nbr>=BMAX||nosc>OB)return null;const t=A.currentTime,f=Math.min(9000,Math.max(180,fq(n+TR)*2)),src=A.createBufferSource(),g=A.createGain();
+src.buffer=BRB;src.loop=1;src.playbackRate.value=f/1000;const v=.16*CHAR*lvl;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(v*2.2,t+.025);g.gain.setTargetAtTime(v,t+.03,.06);
+src.connect(g);g.connect(n%2?S.sB:S.sA);src.start(t,Math.random()*1.9);nbr++;return{src,g}}
+function brOff(b,r=.12){if(!b||b.off)return;b.off=1;nbr--;const t=A.currentTime;b.g.gain.cancelScheduledValues(t);b.g.gain.setValueAtTime(b.g.gain.value,t);b.g.gain.linearRampToValueAtTime(0,t+r);b.src.stop(t+r+.02)}
+function pipeOff(p,r){if(--p.refs>0)return;if(P.get(p.k)===p)P.delete(p.k);fadeP(p,r||p.rel)}
+function engage(S,n,art){const t=A.currentTime,ps=[];ps.br=0;
+for(const D of DIV){if(D!==S&&!cpOn(D.id+'>'+S.id))continue;if(D.dirty)build(D);if(!D.groups.length&&!D.perc.length)continue;ps.br=Math.max(ps.br,D.br*D.k);
+for(const off of [...(D.uoff?[]:[0]),...(D.sub?[-12]:[]),...(D.sup?[12]:[])]){const m=n+off+TR;if(m<12||m>120)continue;ps.push(pipeOn(D,m,t,art))}}
+if(art&&CHIFF>0&&S.groups.length){const nb=A.createBufferSource(),bp=A.createBiquadFilter(),cg=A.createGain();nb.buffer=NZ;bp.type='bandpass';bp.frequency.value=Math.min(6000,Math.max(600,fq(n+TR)*4));bp.Q.value=3;
+cg.gain.setValueAtTime(CHIFF*.4*(.5+S.br),t);cg.gain.exponentialRampToValueAtTime(.001,t+.06);nb.connect(bp);bp.connect(cg);cg.connect(n%2?S.sB:S.sA);nb.start(t,Math.random()*1.8);nb.stop(t+.1)}
+return ps}
+const hl=(S,n,x)=>S.keys[n]&&S.keys[n].classList.toggle('d',!!x),real=e=>e.h.size>(e.h.has('sus')?1:0),
+drop=(k,e)=>{KS.delete(k);e.ps.forEach(p=>pipeOff(p));brOff(e.br);hl(e.S,e.n,0)};
+function press(S,n,src='x'){if(n<S.lo||n>S.hi)return;init();if(!A)return;const k=S.i+':'+n;let e=KS.get(k); // no key outside the compass
+if(e&&!real(e)){drop(k,e);e=null} // re-striking a sustained key re-articulates it
+if(!e){if(nosc>NMAX)for(const[k2,e2]of [...KS])if(!real(e2)){drop(k2,e2);if(nosc<=NMAX*.8)break} // only ever steal sustained-but-released keys
+const ps=engage(S,n,1);KS.set(k,e={S,n,h:new Set,ps,br:breath(S,n,ps.br)})}
+e.h.add(src);hl(S,n,1)}
+function release(S,n,src='x',force){const k=S.i+':'+n,e=KS.get(k);if(!e||!e.h.delete(src)||real(e))return;hl(S,n,0);
+if(sus&&!force)e.h.add('sus');else drop(k,e)}
+function setSus(x){sus=x;$('susb').classList.toggle('on',!!x);if(!x)for(const[k,e]of [...KS])if(e.h.delete('sus')&&!e.h.size)drop(k,e)}
+function revoice(){if(!A)return;for(const e of KS.values()){const old=e.ps;e.ps=engage(e.S,e.n,0);old.forEach(p=>pipeOff(p,.05))}}
+function relWhere(f){for(const[k,e]of [...KS]){for(const h of [...e.h])if(f(h))e.h.delete(h);if(!real(e)){hl(e.S,e.n,0);if(!e.h.size)drop(k,e)}}}
+function halt(){run++;if(A){for(const p of new Set([...P.values(),...[...KS.values()].flatMap(e=>e.ps)]))fadeP(p,.05);for(const e of KS.values())brOff(e.br,.05)}for(const e of KS.values())hl(e.S,e.n,0);KS.clear();P.clear();for(const c in KD)delete KD[c];
+$('now').textContent='';if(TS)endTour()}
 function setExp(D,e){if(!D||!D.box)return;D.exp=Math.min(1,Math.max(0,e));D.sl&&(D.sl.value=Math.round(D.exp*100));applyExp(D)}
-// ---------- registration
-const lvlReg=(n,D)=>({on:ALL.filter(s=>s.lvl>0&&s.lvl<=n&&(!D||s.d===D)).map(s=>s.id),cp:Object.keys(CPL).filter(k=>CPL[k]&&CPL[k]<=n&&(!D||k.endsWith('>'+D.id))),tr:[],oc:{}});
-const getReg=D=>({on:ALL.filter(s=>s.on&&(!D||s.d===D)).map(s=>s.id),cp:Object.keys(CPL).filter(k=>CP[k]&&(!D||k.endsWith('>'+D.id))),tr:DIV.filter(X=>X.trem&&(!D||X===D)).map(X=>X.id),
+// ---------- shop: fill these in to monetise. Empty values hide the buttons, and with no `buy` link every Pro feature stays unlocked.
+const SHOP={
+// Stripe Payment Links, made by dev/stripe_setup.py (LIVE links, from stripe_links.live.json). Stripe Managed Payments is merchant of record.
+support:'',  // donation link (e.g. Ko-fi); Stripe pay-what-you-want is restricted for this account's country
+buy:'https://buy.stripe.com/00wbJ11cd7Vj613eV51Fe00',      // Pro, one-time; Stripe's confirmation page shows the unlock code
+price:'US$12 once',
+site:'https://buy.stripe.com/00w14ndYZ3F3ahj6oz1Fe01',     // church / site licence (same unlock code)
+sitePrice:'US$39',
+sub:'https://buy.stripe.com/8x27sL0898Zn3SVbIT1Fe02',      // Pro subscription (same unlock code)
+subPrice:'US$3/month',
+portal:'https://billing.stripe.com/p/login/00wbJ11cd7Vj613eV51Fe00', // subscribers cancel / update card here
+// SHA-256 of unlock codes (make one with dev/newcode.py). Rotate each major release; keep old hashes so earlier buyers stay unlocked.
+codes:['d94e42e9e70f52f6ba83446f689e91b32f81e66e8238d71ac3a6ca6019e5b7c0']};
+// ---------- persistence
+const SSK='organ-settings-v1',PSK='organ-pistons-v3',PROK='organ-pro';
+const ls={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v);return 1}catch(e){return 0}},del(k){try{localStorage.removeItem(k)}catch(e){}}};
+if(/[?&]reset\b/.test(location.search))ls.del(SSK);
+let SET={};try{SET=JSON.parse(ls.get(SSK)||'{}')||{}}catch(e){SET={}}
+let svT;const saveSoon=()=>{clearTimeout(svT);svT=setTimeout(()=>ls.set(SSK,JSON.stringify({...SET,reg:getReg()})),400)};
+// ---------- registration. Stops are stored by a stable key "division:label", so editing the stop list never remaps saved pistons.
+const SK={};ALL.forEach(s=>{s.key=s.d.id+':'+s.label;SK[s.key]=s});
+const sk=x=>typeof x=='number'?ALL[x]&&ALL[x].key:x;
+const lvlReg=(n,D)=>({on:ALL.filter(s=>s.lvl>0&&s.lvl<=n&&(!D||s.d===D)).map(s=>s.key),cp:Object.keys(CPL).filter(k=>CPL[k]&&CPL[k]<=n&&(!D||k.endsWith('>'+D.id))),tr:[],oc:{}});
+const getReg=D=>({on:ALL.filter(s=>s.on&&(!D||s.d===D)).map(s=>s.key),cp:Object.keys(CPL).filter(k=>CP[k]&&(!D||k.endsWith('>'+D.id))),tr:DIV.filter(X=>X.trem&&(!D||X===D)).map(X=>X.id),
 oc:Object.fromEntries(DIV.filter(X=>!D||X===D).map(X=>[X.id,[X.sub,X.sup,X.uoff]]))});
-function setReg(r,D){for(const s of ALL)if(!D||s.d===D)s.on=r.on.includes(s.id)?1:0;for(const k in CPL)if(!D||k.endsWith('>'+D.id))CP[k]=r.cp.includes(k)?1:0;
-for(const X of DIV)if(!D||X===D){X.trem=r.tr.includes(X.id)?1:0;[X.sub,X.sup,X.uoff]=(r.oc||{})[X.id]||[0,0,0];trem(X)}chg()}
-function chg(){DIV.forEach(d=>d.dirty=1);revoice();sync()}
-function sync(){let n=0;for(const s of ALL){const o=!!s.on,c=!o&&isOn(s);s.el.classList.toggle('on',o);s.el.classList.toggle('cr',c);n+=o||c}
-for(const k in CPL)CT[k].classList.toggle('on',!!CP[k]),CT[k].classList.toggle('cr',!CP[k]&&!!cpOn(k));
-for(const D of DIV){D.ob.forEach((b,j)=>b.classList.toggle('on',!![D.sub,D.sup,D.uoff][j]));D.sm.textContent=`${D.stops.filter(isOn).length} / ${D.stops.length} stops`}
-$('st').dataset.n=n}
-function pist(name,mk,D){if(SETM){PS[name]=getReg(D);try{localStorage.setItem(PSK,JSON.stringify(PS))}catch(e){}SETM=0;$('setb').classList.remove('set');$('now').textContent='stored '+name}else setReg(PS[name]||mk(),D)}
+const okReg=r=>r&&typeof r=='object'&&Array.isArray(r.on);
+function setReg(r,D){if(!okReg(r))return;const on=new Set(r.on.map(sk)),cp=Array.isArray(r.cp)?r.cp:[],tr=Array.isArray(r.tr)?r.tr:[];
+for(const s of ALL)if(!D||s.d===D)s.on=on.has(s.key)?1:0;for(const k in CPL)if(!D||k.endsWith('>'+D.id))CP[k]=cp.includes(k)?1:0;
+for(const X of DIV)if(!D||X===D){X.trem=tr.includes(X.id)?1:0;const o=(r.oc||{})[X.id];[X.sub,X.sup,X.uoff]=Array.isArray(o)?[0,1,2].map(j=>o[j]?1:0):[0,0,0];trem(X)}chg()}
+function chg(){DIV.forEach(d=>d.dirty=1);revoice();sync();warm();saveSoon()}
+const tog=(el,on)=>{if(!el)return;el.classList.toggle('on',!!on);el.setAttribute('aria-pressed',!!on)};
+function sync(){let n=0;for(const s of ALL){const o=!!s.on,c=!o&&isOn(s);tog(s.el,o);s.el.classList.toggle('cr',c);n+=o||c}
+for(const k in CPL){tog(CT[k],CP[k]);CT[k].classList.toggle('cr',!CP[k]&&!!cpOn(k))}
+for(const D of DIV){D.ob.forEach((b,j)=>tog(b,[D.sub,D.sup,D.uoff][j]));D.sm.textContent=`${D.stops.filter(isOn).length}/${D.stops.length}`}
+tog($('gprev'),CP['G>P']);tog($('wprev'),CP['W>P']);tog($('sfz'),SFZ);$('st').dataset.n=n;lamps()}
+const msg=t=>{$('now').textContent=t};
+// pistons: 8 memory levels (level 1 is free; 2–8 are Pro). Level 1 keeps the old storage names, so earlier pistons survive.
+const PRESETS={};let PS={},LVL=1,GSEQ=-1,armT;
+try{PS=JSON.parse(ls.get(PSK)||'null')||{};const o=ls.get('organ-pistons-v2');
+if(o&&!Object.keys(PS).length){for(const[k,r]of Object.entries(JSON.parse(o)||{}))if(okReg(r))PS[k]={...r,on:r.on.map(sk).filter(Boolean)};ls.set(PSK,JSON.stringify(PS))}}catch(e){PS={}}
+const pk=n=>(LVL>1?'L'+LVL+'/':'')+n,store=()=>ls.set(PSK,JSON.stringify(PS));
+function setArm(x){SETM=x?1:0;$('setb').classList.toggle('set',!!SETM);$('setb').setAttribute('aria-pressed',!!SETM);clearTimeout(armT);
+if(SETM){msg('SET is armed: press any piston to store the current registration on memory level '+LVL);armT=setTimeout(()=>{setArm(0);msg('SET cancelled')},10000)}}
+function pist(name,mk,D,label){if(SETM){PS[pk(name)]=getReg(D);setArm(0);msg(store()?`stored ${label||name} on memory level ${LVL}`:'could not save: this browser is blocking storage');return}
+const r=PS[pk(name)];setReg(okReg(r)?r:mk(),D);msg((label||name)+(okReg(r)?' (your setting)':''))}
+const gen=i=>{GSEQ=i;pist('G'+(i+1),()=>lvlReg(i+1),null,'General '+(i<9?i+1:'Tutti'))};
+function cancelAll(D){setArm(0);setReg({on:[],cp:[],tr:[],oc:{}},D);msg(D?D.name+' cancelled':'general cancel')}
+function setLvl(n){n=Math.min(8,Math.max(1,n));if(n>1&&!pro()){proDlg('Memory levels 2–8');return}LVL=n;$('lvl').textContent=LVL;msg('memory level '+LVL)}
 const by=(d,l)=>ALL.find(s=>s.d.id==d&&s.label==l);
-function preset(p){if(p.all)return setReg({on:ALL.map(s=>s.id),cp:Object.keys(CPL),tr:[],oc:{}});const on=[];for(const d in p)if(DV[d])for(const l of p[d]){const s=by(d,l);s?on.push(s.id):console.warn('missing',d,l)}setReg({on,cp:p.cp||[],tr:p.tr||[],oc:{}})}
-const PRE={'Baroque plenum':{G:['Principal 8′','Octave 4′','Fifteenth 2′','Mixture IV-V'],P:['Prestant 16′','Octave 8′','Octave 4′','Mixture IV'],cp:['G>P']},
+function preset(p){setArm(0);if(p.all)return setReg({on:ALL.map(s=>s.key),cp:Object.keys(CPL),tr:[],oc:{}});const on=[];for(const d in p)if(DV[d])for(const l of p[d]){const s=by(d,l);s?on.push(s.key):console.warn('missing',d,l)}setReg({on,cp:p.cp||[],tr:p.tr||[],oc:{}})}
+const PRE={'Diapason chorus':{G:['Open Diapason I 8′','Principal 4′'],W:['Geigen Principal 8′','Rohrflöte 8′','Octave 4′'],C:['Holzgedackt 8′','Principal 4′'],S:['Concert Flute 8′'],E:['Echo Diapason 8′'],P:['Subbass 16′','Octave 8′'],cp:['G>P']},
+'Baroque plenum':{G:['Principal 8′','Octave 4′','Fifteenth 2′','Mixture IV-V'],P:['Prestant 16′','Octave 8′','Octave 4′','Mixture IV'],cp:['G>P']},
 'Organo pleno':{G:['Double Open Diapason 16′','Open Diapason I 8′','Octave 4′','Super Octave 2′','Mixture IV-V','Fourniture IV'],W:['Open Diapason 8′','Octave 4′','Mixture III','Trumpet 8′'],P:['Open Diapason 16′','Octave 8′','Trombone 16′'],cp:['W>G','G>P']},
 'Cornet solo':{G:['Stopped Diapason 8′','Cornet V'],P:['Subbass 16′']},
 'Tierce + Cromorne':{C:['Holzgedackt 8′','Sesquialtera II','Cromorne 8′'],P:['Subbass 16′']},
@@ -347,82 +619,220 @@ const PRE={'Baroque plenum':{G:['Principal 8′','Octave 4′','Fifteenth 2′',
 'Fanfare':{S:['Royal Trumpets 8′','Tuba Magna 8′','Chamade 8′'],G:['Trompette en chamade 8′','Trompette Militaire 8′'],P:['Posaune 16′','Trombone 16′'],cp:['S>G','G>P']},
 'Floor shakers':{P:['Contra Trombone 64′','Contre-bombarde 32′','Principal 32′','Bourdon 32′','Bazuin 32′','Gravissima 64′']},
 'Everything':{all:1}};
-// ---------- UI
-const bar=$('bar'),CT={},ctl=(host,txt,min,max,step,val,fn,fmt)=>{const l=E('label','ct'),i=E('input'),sp=E('span');i.type='range';i.min=min;i.max=max;i.step=step;i.value=val;
-const up=()=>{fn(+i.value);sp.textContent=fmt?fmt(+i.value):i.value};i.oninput=up;sp.textContent=fmt?fmt(val):val;l.append(txt,i,sp);host.append(l);return i},
-btn=(host,t,f,title)=>{const b=E('button','',t);b.onclick=f;if(title)b.title=title;host.append(b);return b};
-ctl(bar,'Volume ','0','100',1,60,v=>M&&(M.gain.value=v/100)).id='vol';
-ctl(bar,'Reverb ',.3,9,.1,RT,v=>{RT=v;if(A)RV.buffer=ir()},v=>v+'s');
-ctl(bar,'Wet ',0,1.5,.05,RM,v=>{RM=v;if(A)WG.gain.value=v});
-ctl(bar,'Chiff ',0,1,.05,CHIFF,v=>CHIFF=v);
-ctl(bar,'A4 ',392,466,1,A4,v=>A4=v,v=>v+' Hz');
-ctl(bar,'Transpose ',-6,6,1,0,v=>TR=v,v=>(v>0?'+':'')+v);
-ctl(bar,'Trem rate ',3,8,.1,TRATE,v=>{TRATE=v;DIV.forEach(D=>D.lf&&(D.lf.frequency.value=v*(1+D.i*.03)))},v=>v+' Hz');
-ctl(bar,'Trem depth ',.05,.4,.01,TD,v=>{TD=v;DIV.forEach(trem)});
-{const l=E('label','ct','Temperament '),s=E('select');for(const k in TP)s.append(new Option(k));s.onchange=()=>{TUN=s.value;revoice()};l.append(s);bar.append(l)}
-{const l=E('label','ct','Pedal shoe CC11 → '),s=E('select');DIV.filter(d=>d.box).forEach(d=>s.append(new Option(d.name,d.id,0,d.id==shoe)));s.onchange=()=>shoe=s.value;l.append(s);bar.append(l)}
-btn(bar,'Enable MIDI',async e=>{init();if(!navigator.requestMIDIAccess){e.target.textContent='No Web MIDI';return}
-try{const a=await navigator.requestMIDIAccess(),hook=()=>{const n=[];for(const i of a.inputs.values()){i.onmidimessage=mm;n.push(i.name)}e.target.textContent='MIDI: '+(n.join(', ')||'no device')};hook();a.onstatechange=hook}catch(x){e.target.textContent='MIDI denied'}},'ch1 pedal, ch2 Choir, ch3 Great, ch4 Swell, ch5 Solo, ch6 Echo; CC11 expression, CC64 sustain, program change = general piston');
-btn(bar,'Compact',()=>document.body.classList.toggle('cmp'));
-btn(bar,'Panic',halt);
-btn(bar,'Reset pistons',()=>{PS={};try{localStorage.removeItem(PSK)}catch(e){}$('now').textContent='pistons reset'});
-const gen=i=>pist('G'+(i+1),()=>lvlReg([1,2,3,4,5,6,7,8,9,10][i]));
-{const gp=$('gp');gp.append(E('b','','Generals '));for(let i=0;i<10;i++)btn(gp,i<9?'G'+(i+1):'Tutti',()=>gen(i),'general piston: stops of crescendo level 1–'+(i+1)+' plus matching couplers');
-btn(gp,'Cancel',()=>setReg({on:[],cp:[],tr:[],oc:{}}));
-btn(gp,'G→P rev',()=>{CP['G>P']^=1;chg()},'Great to Pedal reversible');
-btn(gp,'Sw→P rev',()=>{CP['W>P']^=1;chg()},'Swell to Pedal reversible');
-btn(gp,'SET',e=>{SETM=!SETM;e.target.classList.toggle('set',!!SETM)},'press SET then any piston to store the current registration (saved in this browser)').id='setb';
-Object.entries(PRE).forEach(([k,v])=>btn(gp,k,()=>preset(v)));
-btn(gp,'▶ Famous stops',()=>tour(FAM),'plays each stop with a famous provenance alone');}
-for(const D of DIV){const det=E('details','dv'),sum=E('summary','',`<b>${D.name}</b> <em></em>`),tl=E('div','tl'),sg=E('div','sg');det.open=true;D.sm=sum.querySelector('em');
-tl.append(E('b','','Pistons '));for(let i=1;i<=6;i++)btn(tl,i,()=>pist('D'+D.id+i,()=>lvlReg([1,2,3,5,7,9][i-1],D),D));
-btn(tl,'Full',()=>pist('D'+D.id+'F',()=>lvlReg(10,D),D));btn(tl,'0',()=>setReg({on:[],cp:[],tr:[],oc:{}},D),'cancel this division');
-tl.append(E('br'));D.tb=btn(tl,'Tremulant',()=>{D.trem^=1;trem(D)});
-D.ob=['Sub 16′','Super 4′','Unison off'].map((t,j)=>btn(tl,t,()=>{const k=['sub','sup','uoff'][j];D[k]^=1;chg()},D.name+' octave coupler'));
-tl.append(E('br'),E('b','','Couplers '));
-for(const k in CPL)if(k.endsWith('>'+D.id)){const f=DV[k[0]];CT[k]=btn(tl,f.name.slice(0,2)+'→'+D.name.slice(0,2),()=>{CP[k]^=1;chg()},f.name+' to '+D.name)}
-for(const s of D.stops){const c=s.perc?'pc':'RBUOKCVN'.includes(s.t)?'rd':'QEA'.includes(s.t)?'st':'FSHTJY'.includes(s.t)?'fl':'pr';
-s.el=E('div','k '+c,`<b>${s.label}</b><i>${s.desc||''}${s.org?' — '+s.org:''}</i>`);s.el.title=s.org||s.desc||'';s.el.onclick=()=>{s.on^=1;chg()};sg.append(s.el)}
-det.append(sum,tl,sg);$('jambs').append(det)}
-function kbd(D,host){let nw=0;for(let n=D.lo;n<=D.hi;n++)if(![1,3,6,8,10].includes(n%12))nw++;let wi=0;
-for(let n=D.lo;n<=D.hi;n++){const bl=[1,3,6,8,10].includes(n%12),d=E('div',bl?'b':'w');
-if(bl){const bw=.6*100/nw;d.style.width=bw+'%';d.style.left=(wi*100/nw-bw/2)+'%'}else{wi++;if(n%12==0)d.textContent='C'+(n/12-1)}
-d.onpointerdown=e=>{e.preventDefault();d.releasePointerCapture&&d.releasePointerCapture(e.pointerId);if(D.id!='P')setAct(D);press(D,n)};
-d.onpointerenter=e=>{if(e.buttons&1)press(D,n)};d.onpointerup=d.onpointerleave=d.onpointercancel=()=>release(D,n);host.append(d);D.keys[n]=d}}
-function setAct(D){ACT=D;DIV.forEach(X=>X.mw&&X.mw.classList.toggle('act',X===D))}
-for(const D of [...DIV].reverse().filter(d=>d.id!='P')){const w=E('div','man'),l=E('span','',`${D.name} — manual ${['I','II','III','IV','V'][D.i-1]}${D.box?' (enclosed)':''}`),k=E('div','kb');w.append(l,k);l.onclick=()=>setAct(D);D.mw=w;$('mans').append(w);kbd(D,k)}
-kbd(DV.P,$('pb'));setAct(DV.G);
-// pedals
-{const sh=$('shoes');sh.append(E('b','','Pedals '));
-for(const D of DIV.filter(d=>d.box)){D.sl=ctl(sh,D.name+' shoe ',0,100,1,100,v=>setExp(D,v/100),v=>v+'%')}
-ctl(sh,'Crescendo ',0,10,1,0,v=>{CR=v;chg()},v=>v?v+'/10':'off');
-const sf=btn(sh,'Sforzando (hold)',()=>0,'toe stud: every stop of crescendo level 1–10 and their couplers while held');
-sf.onpointerdown=()=>{SFZ=1;sf.classList.add('on');chg()};sf.onpointerup=sf.onpointerleave=()=>{if(SFZ){SFZ=0;sf.classList.remove('on');chg()}};
-const sb=btn(sh,'Sustain (Space)',()=>setSus(!sus));sb.id='susb'}
-// ---------- tour of famous stops
-const CH=[48,55,60,64,67],FAM=ALL.filter(s=>s.org).map(s=>[`${s.label} · ${s.org} — ${s.desc}`,s.d,{on:[s.id],cp:[],tr:[],oc:{}},s.d.id=='P'?[36,40,43]:CH,1500]);
-async function tour(steps){halt();init();TS=getReg();const id=run;
-for(const[lab,S,reg,notes,d]of steps){if(id!==run)return;setReg(reg);$('now').textContent=lab;notes.forEach(n=>press(S,n));await sleep(d);notes.forEach(n=>release(S,n,1));await sleep(200)}
-if(id===run)halt()}
-// ---------- input: MIDI, computer keyboard
-const CHD='PCGWSE';
-function mm(e){const[s,a,b]=e.data,c=s&15,k=s&240,D=DV[CHD[c]];if(!D)return;
-if(k==144&&b)press(D,a);else if(k==128||k==144)release(D,a);
-else if(k==176){if(a==11)setExp(c?D:DV[shoe],b/127);else if(a==64)setSus(b>=64);else if(a==7&&M)M.gain.value=b/127;else if(a==120||a==123)halt()}
+// ---------- Pro and support
+let PRO=ls.get(PROK)||'';
+const pro=()=>!SHOP.buy||(!!PRO&&(!SHOP.codes.length||SHOP.codes.includes(PRO)));
+const sha=async t=>[...new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(t)))].map(b=>b.toString(16).padStart(2,'0')).join('');
+async function unlock(code){code=(code||'').trim();if(code.length<6)return 'Please enter the code from your receipt.';
+if(!crypto.subtle)return 'Unlocking needs a secure (https) page.';const h=await sha(code);
+if(SHOP.codes.length&&!SHOP.codes.includes(h))return 'That code was not recognised. Check it for typos, or contact the seller from your receipt.';
+PRO=h;ls.set(PROK,h);proUI();return ''}
+// ---------- UI helpers
+const CT={},ctl=(host,txt,min,max,step,key,def,fn,fmt,tip)=>{const l=E('label','ct'),i=E('input'),sp=E('span');i.type='range';i.min=min;i.max=max;i.step=step;
+const v0=SET[key]!=null&&isFinite(SET[key])?+SET[key]:def;i.value=v0;if(tip)l.title=tip;
+i.sync=()=>sp.textContent=fmt?fmt(+i.value):i.value;i.oninput=()=>{fn(+i.value);i.sync();if(key){SET[key]=+i.value;saveSoon()}};i.sync();l.append(txt,i,sp);host.append(l);fn(v0);return i},
+sel=(host,txt,opts,key,def,fn,tip)=>{const l=E('label','ct',txt),s=E('select');for(const[v,t]of opts)s.append(new Option(t,v));s.value=SET[key]!=null&&opts.some(o=>o[0]==SET[key])?SET[key]:def;if(tip)l.title=tip;
+s.onchange=()=>{fn(s.value);if(key){SET[key]=s.value;saveSoon()}};l.append(s);host.append(l);fn(s.value);return s},
+btn=(host,t,f,title,cls)=>{const b=E('button',cls||'',t);b.type='button';b.onclick=f;if(title)b.title=title;host.append(b);return b};
+function dlg(title,body){const d=$('dlg');$('dlgt').textContent=title;const b=$('dlgb');b.innerHTML='';typeof body=='string'?b.innerHTML=body:b.append(body);d.showModal?d.showModal():d.setAttribute('open','');return b}
+$('dlgx').onclick=()=>$('dlg').close?$('dlg').close():$('dlg').removeAttribute('open');
+// ---------- settings drawer (#bar)
+let READY=0;const bar=$('bar');let VS,RS,WS;
+// reverb change: build the new room, fade it in and the old one out (no click, no cut tail)
+function newVerb(){if(!A)return;const o=RV,og=WG,t=A.currentTime;RV=A.createConvolver();RV.buffer=ir();WG=A.createGain();WG.gain.setValueAtTime(0,t);WG.gain.setTargetAtTime(RM,t,.12);RV.connect(WG);WG.connect(M);
+for(const D of DIV){D.out.connect(RV);try{D.out.disconnect(o)}catch(x){}}og.gain.setTargetAtTime(0,t,.12);setTimeout(()=>{try{og.disconnect();o.disconnect()}catch(x){}},1500)}
+var MUTE=!!SET.mute; // master mute: silences output without touching the volume setting or any held notes
+const mgain=()=>MUTE?0:+VS.value/100;
+VS=ctl(bar,'Volume ','0','100',1,'vol',60,v=>M&&M.gain.setTargetAtTime(MUTE?0:v/100,A.currentTime,.02));VS.id='vol';
+{const l=E('label','ct'),c=E('input');c.type='checkbox';c.id='mute';c.checked=MUTE;c.setAttribute('aria-label','Mute all sound');
+c.onchange=()=>{MUTE=c.checked;SET.mute=MUTE?1:0;saveSoon();M&&M.gain.setTargetAtTime(mgain(),A.currentTime,.02)};l.append(c,' Mute');l.title='silence the organ without changing the volume';bar.append(l)}
+sel(bar,'Room ',Object.keys(ROOMS).map(k=>[k,k]),'room','Church',v=>{ROOM=v;const[r,w]=ROOMS[v]||ROOMS.Church;if(RS&&(+RS.value!==r||+WS.value!==w)){RS.value=r;WS.value=w;RS.oninput();WS.oninput()}});
+RS=ctl(bar,'Reverb ',.3,9,.1,'rt',ROOMS[ROOM][0],v=>{RT=v;clearTimeout(irT);irT=setTimeout(newVerb,250)},v=>v+' s');
+WS=ctl(bar,'Wet ',0,1.5,.05,'wet',ROOMS[ROOM][1],v=>{RM=v;WG&&WG.gain.setTargetAtTime(v,A.currentTime,.05)});
+ctl(bar,'Pipe character ',0,1,.05,'char',.6,v=>{setChar(v);DIV.forEach(D=>D.dirty=1)},v=>Math.round(v*100)+'%','0 = perfectly steady and in tune; higher adds each pipe’s own tuning, wind sway, breath and speech');
+ctl(bar,'Chiff ',0,1,.05,'chiff',.5,v=>CHIFF=v);
+ctl(bar,'A4 ',392,466,1,'a4',440,v=>{if(A4!==v){A4=v;READY&&chg()}},v=>v+' Hz');
+ctl(bar,'Transpose ',-6,6,1,'tr',0,v=>{if(TR!==v){TR=v;revoice();$('trd').textContent=(v>0?'+':'')+v}},v=>(v>0?'+':'')+v);
+ctl(bar,'Trem rate ',3,8,.1,'trate',TRATE,v=>{TRATE=v;DIV.forEach(D=>D.lf&&(D.lf.frequency.value=v*(1+D.i*.03)))},v=>v+' Hz');
+ctl(bar,'Trem depth ',.05,.4,.01,'tdepth',TD,v=>{TD=v;DIV.forEach(trem)});
+sel(bar,'Temperament ',Object.keys(TP).map(k=>[k,k]),'tun','Equal',v=>{if(TUN!==v){TUN=v;READY&&chg()}});
+let MMAP='ch';sel(bar,'MIDI keyboards ',[['ch','by channel: 1 Pedal, 2 Choir, 3 Great, 4 Swell, 5 Solo, 6 Echo'],['omni','one keyboard: any channel plays the selected manual'],['split','one keyboard, split: below middle C plays the pedal']],'mmap','ch',v=>{MMAP=v;relWhere(h=>h[0]=='m')});
+sel(bar,'CC11 shoe ',DIV.filter(d=>d.box).map(d=>[d.id,d.name]),'shoe','W',v=>shoe=v,'expression pedal (CC11) on a channel without its own swell box moves this shoe');
+const midiB=btn(bar,'Enable MIDI',()=>midiOn(1),'connect MIDI keyboards and pedalboards (Chrome, Edge, Firefox; not Safari)');
+btn(bar,'Reset pistons',e=>{const b=e.currentTarget;if(b.dataset.c){PS={};store();msg('all piston memories cleared');b.textContent='Reset pistons';delete b.dataset.c;return}
+b.dataset.c=1;b.textContent='Click again to erase all pistons';setTimeout(()=>{b.textContent='Reset pistons';delete b.dataset.c},4000)},'erase every piston you have set, on all memory levels');
+{const l=E('label','ct'),c=E('input');c.type='checkbox';c.checked=SET.letters!=null?!!SET.letters:matchMedia('(pointer:fine)').matches;l.append(c,' computer-key letters on keys');
+c.onchange=()=>{SET.letters=c.checked;saveSoon();legend()};bar.append(l);SET.letters=c.checked}
+{const l=E('label','ct'),c=E('input');c.type='checkbox';c.checked=!!SET.small;l.append(c,' small stop knobs');c.onchange=()=>{SET.small=c.checked;document.body.classList.toggle('small',c.checked);saveSoon()};bar.append(l);document.body.classList.toggle('small',!!SET.small)}
+$('setsb').onclick=()=>{bar.hidden=!bar.hidden;$('setsb').setAttribute('aria-expanded',!bar.hidden)};
+// ---------- stop jambs (left: Pedal, Choir, Echo · right: Great, Swell, Solo (most-used divisions on top)), drawknobs and coupler tablets
+const fam=s=>s.perc?'pc':'RBUOKCVNX'.includes(s.t)?'rd':'QEA'.includes(s.t)?'st':'FSHTJYZ'.includes(s.t)?'fl':'pr';
+for(const[side,ids]of [['jamL','PCE'],['jamR','GWS']])for(const id of ids){const D=DV[id],sec=E('section','div'),h=E('h3','',`${D.name} <em></em>`),kg=E('div','kg'),tb=E('div','tabs');
+D.sm=h.querySelector('em');
+for(const s of D.stops){const m=s.label.match(/^(.*?)\s([\d⅔⅖⅓⅕⅗½]+′)$/),nm=m?m[1]:s.label;
+const lw=Math.max(...nm.split(/[\s-]/).map(w=>w.length));s.el=E('div','k '+fam(s)+(lw>11?' xl':lw>8?' lg':''),`<b>${nm}</b>${m?'<small>'+m[2]+'</small>':''}`);s.el.tabIndex=0;s.el.setAttribute('role','button');
+const info=`${s.label}${s.desc?' — '+s.desc:''}${s.org?' · '+s.org:''}`;s.el.title=info;s.el.setAttribute('aria-label',D.name+' '+info);
+s.el.onclick=()=>{s.on^=1;chg();msg((s.on?'drawn: ':'retired: ')+D.name+' '+info)};s.el.onmouseenter=()=>{$('hint').textContent=D.name+' · '+info};kg.append(s.el)}
+D.tb=btn(tb,'Tremulant',()=>{D.trem^=1;trem(D);saveSoon()},D.name+' tremulant','tab');
+D.ob=['Sub 16′','Super 4′','Unison off'].map((t,j)=>btn(tb,`${D.name.slice(0,2)} ${t}`,()=>{const k=['sub','sup','uoff'][j];D[k]^=1;chg()},D.name+' octave coupler: '+t,'tab'));
+if(id=='P'){D.tb.remove();D.ob.forEach(b=>b.remove())}
+for(const k in CPL)if(k.endsWith('>'+D.id)){const f=DV[k[0]];CT[k]=btn(tb,`${f.name} to ${D.name}`,()=>{CP[k]^=1;chg()},f.name+' to '+D.name+' coupler','tab')}
+sec.append(h,kg,tb);$(side).append(sec)}
+const trem0=trem;trem=D=>{trem0(D);tog(D.tb,D.trem)};
+// ---------- manuals (top V Echo … bottom I Choir), each with thumb pistons underneath
+const BL=[1,3,6,8,10];
+function kbd(D,host){let nw=0;for(let n=D.lo;n<=D.hi;n++)if(!BL.includes(n%12))nw++;let wi=0;
+for(let n=D.lo;n<=D.hi;n++){const bl=BL.includes(n%12),d=E('div',bl?'b':'w');
+if(bl){const bw=.62*100/nw;d.style.width=bw+'%';d.style.left=(wi*100/nw-bw/2)+'%'}else{wi++;if(n%12==0)d.dataset.c='C'+(n/12-1)}
+d.onpointerdown=e=>{if(e.pointerType=='mouse'&&e.button!==0)return;e.preventDefault();const ae=document.activeElement;if(ae&&ae!==document.body&&/INPUT|SELECT/.test(ae.tagName))ae.blur();
+try{d.hasPointerCapture(e.pointerId)&&d.releasePointerCapture(e.pointerId)}catch(x){}if(D.id!='P')setAct(D);
+if(LATCH){const x=KS.get(D.i+':'+n);x&&x.h.has('L')?release(D,n,'L',1):press(D,n,'L');return}press(D,n,'p'+e.pointerId)};
+d.onpointerenter=e=>{if(!LATCH&&e.buttons&1)press(D,n,'p'+e.pointerId)};d.onpointerup=d.onpointerleave=d.onpointercancel=e=>release(D,n,'p'+e.pointerId);host.append(d);D.keys[n]=d}
+host.oncontextmenu=e=>e.preventDefault()}
+function setAct(D){ACT=D;DIV.forEach(X=>X.mw&&X.mw.classList.toggle('act',X===D));$('actd').textContent=D.name;legend()}
+const ROM=['','I','II','III','IV','V'],tp=(host,t,f,title,cls)=>btn(host,t,f,title,'pist'+(cls?' '+cls:''));
+for(const D of [...DIV].reverse().filter(d=>d.id!='P')){const w=E('div','man'),row=E('div','mrow'),ch=E('div','cheek',`<b>${ROM[D.i]}</b><span>${D.name}${D.box?'<br><i>enclosed</i>':''}</span>`),
+wrap=E('div','kbw'),rail=E('div','rail'),k=E('div','kb'),ch2=E('div','cheek r'),th=E('div','thumb'),tl=E('div','tl'),tr=E('div','tr');
+ch.onclick=()=>setAct(D);ch.title='make '+D.name+' the manual played by the computer keyboard';wrap.append(rail,k);row.append(ch,wrap,ch2);
+for(let i=1;i<=6;i++)tp(tl,i,()=>pist('D'+D.id+i,()=>lvlReg([1,2,3,5,7,9][i-1],D),D,D.name+' '+i),D.name+' divisional piston '+i);
+tp(tl,'F',()=>pist('D'+D.id+'F',()=>lvlReg(10,D),D,D.name+' full'),D.name+' full');tp(tl,'0',()=>cancelAll(D),'cancel '+D.name,'can');
+if(D.id=='G'){for(let i=0;i<10;i++)tp(tr,i<9?i+1:'T',()=>gen(i),'general piston '+(i<9?i+1:'Tutti'),'gen');tp(tr,'GC',()=>cancelAll(),'general cancel','can');
+const sb=tp(tr,'SET',()=>setArm(!SETM),'press SET, then any piston, to store the current registration in this browser','set0');sb.id='setb'}
+if(D.id=='W'){const b=tp(tr,'Sw→Ped',()=>{CP['W>P']^=1;chg()},'Swell to Pedal reversible');b.id='wprev'}
+if(D.id=='C'){tp(tr,'◀',()=>gen(GSEQ>0?GSEQ-1:0),'previous general ([ key)','seq');tp(tr,'▶',()=>gen(Math.min(9,GSEQ+1)),'next general (] key) – step through G1…G10 like a sequencer','seq')}
+th.append(tl,tr);w.append(row,th);D.mw=w;$('mans').append(w);kbd(D,k)}
+// ---------- pedal area: toe studs, expression shoes, crescendo, pedalboard
+const ts=(host,t,f,title,cls)=>btn(host,t,f,title,'toe'+(cls?' '+cls:''));
+{const L=$('toeL'),R=$('toeR'),sh=$('shoes');
+for(let i=1;i<=6;i++)ts(L,i,()=>pist('DP'+i,()=>lvlReg([1,2,3,5,7,9][i-1],DV.P),DV.P,'Pedal '+i),'pedal divisional piston '+i);ts(L,'0',()=>cancelAll(DV.P),'cancel Pedal','can');
+const g=ts(L,'Gt→Ped',()=>{CP['G>P']^=1;chg()},'Great to Pedal reversible');g.id='gprev';
+for(let i=0;i<10;i++)ts(R,i<9?i+1:'T',()=>gen(i),'general '+(i<9?i+1:'Tutti')+' (toe stud)','gen');
+const sf=ts(R,'Sfz',()=>{SFZ^=1;chg();msg(SFZ?'sforzando on: full organ':'sforzando off')},'sforzando reversible: full organ on/off');sf.id='sfz';
+const sb=ts(R,'Sustain',()=>setSus(!sus),'hold notes after release (Space)');sb.id='susb';
+for(const D of DIV.filter(d=>d.box)){const c=E('div','shoe'),i=E('input');i.type='range';i.min=0;i.max=100;i.value=100;i.setAttribute('aria-label',D.name+' expression');i.oninput=()=>setExp(D,i.value/100);
+const sp=E('span','','100%');i.sync=()=>sp.textContent=i.value+'%';c.append(i,E('b','',D.name),sp);sh.append(c);D.sl=i}
+const c=E('div','shoe cresc'),i=E('input');i.type='range';i.min=0;i.max=10;i.value=0;i.setAttribute('aria-label','crescendo pedal');i.id='crsl';
+i.oninput=()=>{CR=+i.value;chg()};const lm=E('div','lamps');for(let j=1;j<=10;j++)lm.append(E('i'));c.append(i,E('b','','Crescendo'),lm);sh.append(c)}
+function lamps(){const ls_=document.querySelectorAll('.lamps i');ls_.forEach((x,j)=>x.classList.toggle('on',SFZ||j<CR));$('crd').textContent=SFZ?'Sfz':CR?CR+'/10':'off'}
+kbd(DV.P,$('pb'));
+const setExp0=setExp;setExp=(D,e)=>{setExp0(D,e);D&&D.sl&&D.sl.sync&&D.sl.sync()};
+// ---------- music desk: display and quick controls
+{const q=$('deskc');
+const rl=E('select');rl.id='reglib';rl.setAttribute('aria-label','registration library');rl.append(new Option('Registration library…',''));for(const k in PRE)rl.append(new Option(k,k));
+rl.onchange=()=>{if(rl.value){preset(PRE[rl.value]);msg('registration: '+rl.value)}rl.value='';rl.blur()};q.append(rl);
+btn(q,'▶ Famous stops',()=>tour(FAM),'hear each stop from a famous organ on its own; click again to stop');
+btn(q,'Latch',e=>{LATCH^=1;tog(e.currentTarget,LATCH);if(!LATCH)relWhere(h=>h=='L')},'click or tap keys to toggle them on and off, so chords of any size can be built with a mouse or one finger');
+btn(q,'Panic',()=>halt(),'silence everything (Esc)','danger');
+const f=E('input');f.type='search';f.placeholder='find a stop…';f.setAttribute('aria-label','find a stop');f.oninput=()=>{const t=f.value.trim().toLowerCase();let first;
+for(const s of ALL){const h=!!t&&(s.label+' '+s.desc+' '+s.org+' '+s.d.name).toLowerCase().includes(t);s.el.classList.toggle('hit',h);if(h&&!first)first=s.el}first&&first.scrollIntoView({block:'nearest',behavior:'smooth'})};q.append(f)}
+// ---------- tour of famous stops (its own holder and registration snapshot; never cuts what you are holding)
+const CH=[48,55,60,64,67],FAM=ALL.filter(s=>s.org).map(s=>[`${s.label} · ${s.org} — ${s.desc}`,s.d,{on:[s.key],cp:[],tr:[],oc:{}},s.d.id=='P'?[36,40,43]:CH,1500]);
+function endTour(){if(TS){const t=TS;TS=null;CR=t.cr;$('crsl').value=CR;setReg(t.reg)}}
+async function tour(steps){if(TS){run++;relWhere(h=>h.startsWith('tour'));endTour();msg('');return}init();if(!A)return;const id=++run,h='tour'+id;TS={reg:getReg(),cr:CR};CR=0;
+for(const[lab,S,reg,notes,d]of steps){if(id!==run)break;setReg(reg);msg(lab);notes.forEach(n=>press(S,n,h));await sleep(d);notes.forEach(n=>release(S,n,h,1));if(id!==run)break;await sleep(200)}
+relWhere(x=>x==h);if(id===run){endTour();msg('')}}
+const halt0=halt;halt=()=>{halt0();setArm(0)};
+// ---------- MIDI
+const CHD='PCGWSE';let MA=null;
+function relKey(n,h){for(const D of DIV)release(D,n,h)}
+function mm(e){const[s,a,b]=e.data,c=s&15,k=s&240,h='m'+c+'@'+(e.target&&e.target.id||'');
+const D=MMAP=='ch'?DV[CHD[c]]:MMAP=='omni'?ACT:a<60?DV.P:ACT;
+if(k==144&&b){if(D)press(D,a,h)}else if(k==128||k==144)relKey(a,h); // note-off searches every division: the selected manual may have changed since note-on
+else if(k==176){if(a==11)setExp(MMAP=='ch'&&D&&D.box?D:DV[shoe],b/127);else if(a==64)setSus(b>=64);else if(a==7){VS.value=Math.round(b/127*100);VS.oninput()}
+else if(a==120||a==123)relWhere(x=>x==h||x.startsWith(h))}
 else if(k==192&&a<10)gen(a)}
+async function midiOn(ask){if(!navigator.requestMIDIAccess){midiB.textContent='No Web MIDI in this browser';return}init();
+try{MA=MA||await navigator.requestMIDIAccess();const hook=()=>{const n=[];for(const i of MA.inputs.values()){i.onmidimessage=mm;n.push(i.name)}midiB.textContent='MIDI: '+(n.join(', ')||'no device yet');$('midid').textContent=n.length?n.length+' MIDI':''};
+hook();MA.onstatechange=e=>{if(e.port&&e.port.state=='disconnected')relWhere(h=>h.endsWith('@'+e.port.id));hook()};SET.midi=1;saveSoon()}catch(x){midiB.textContent=ask?'MIDI permission denied':'Enable MIDI'}}
+// ---------- recording to WAV (Pro): an AudioWorklet copies the master output; samples are kept as 16-bit to save memory
+const REC={on:0};
+const RECW="registerProcessor('rec',class extends AudioWorkletProcessor{process(i){const c=i[0];if(c&&c.length)this.port.postMessage([c[0].slice(0),(c[1]||c[0]).slice(0)]);return true}})";
+async function recToggle(){if(!pro()){proDlg('Recording to WAV');return}init();if(!A)return;const b=$('recb');
+if(REC.on){REC.on=0;REC.tap.disconnect(REC.node);REC.node.port.onmessage=null;clearInterval(REC.t);b.classList.remove('rec');b.textContent='● Record';saveWav();return}
+if(!A.audioWorklet){msg('Recording needs a newer browser (AudioWorklet).');return}
+try{if(!REC.mod){await A.audioWorklet.addModule(URL.createObjectURL(new Blob([RECW],{type:'text/javascript'})));REC.mod=1}}catch(x){msg('Recording could not start: '+x.message);return}
+REC.node=REC.node||new AudioWorkletNode(A,'rec',{numberOfInputs:1,numberOfOutputs:0,channelCount:2,channelCountMode:'explicit'});REC.ch=[];REC.n=0;REC.on=1;REC.t0=Date.now();
+REC.node.port.onmessage=e=>{const[l,r]=e.data,x=new Int16Array(l.length*2);for(let i=0;i<l.length;i++){x[2*i]=Math.max(-1,Math.min(1,l[i]))*32767;x[2*i+1]=Math.max(-1,Math.min(1,r[i]))*32767}REC.ch.push(x);REC.n+=l.length;
+if(REC.n>A.sampleRate*1800)recToggle()}; // 30-minute cap (~350 MB)
+REC.tap.connect(REC.node);b.classList.add('rec');REC.t=setInterval(()=>{const s=(Date.now()-REC.t0)/1000|0;b.textContent=`■ Stop ${s/60|0}:${String(s%60).padStart(2,'0')}`},500);msg('recording… press Stop to save a WAV file')}
+function saveWav(){const sr=A.sampleRate,n=REC.n,h=new DataView(new ArrayBuffer(44)),w=(o,s)=>[...s].forEach((c,i)=>h.setUint8(o+i,c.charCodeAt(0)));
+w(0,'RIFF');h.setUint32(4,36+n*4,1);w(8,'WAVEfmt ');h.setUint32(16,16,1);h.setUint16(20,1,1);h.setUint16(22,2,1);h.setUint32(24,sr,1);h.setUint32(28,sr*4,1);h.setUint16(32,4,1);h.setUint16(34,16,1);w(36,'data');h.setUint32(40,n*4,1);
+const url=URL.createObjectURL(new Blob([h,...REC.ch],{type:'audio/wav'})),a=E('a');a.href=url;a.download='organ-'+new Date().toISOString().slice(0,16).replace(/[:T]/g,'-')+'.wav';document.body.append(a);a.click();a.remove();
+setTimeout(()=>URL.revokeObjectURL(url),60000);REC.ch=[];msg(`saved ${(n/sr).toFixed(1)} s recording`)}
+// ---------- registration files (Pro): settings, current registration and every piston level in one JSON file
+function exportFile(){if(!pro()){proDlg('Registration files');return}const data={app:'virtual-pipe-organ',v:3,saved:new Date().toISOString(),settings:SET,registration:getReg(),pistons:PS};
+const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,1)],{type:'application/json'})),a=E('a');a.href=url;a.download='organ-registrations.json';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),60000)}
+function importFile(){if(!pro()){proDlg('Registration files');return}const f=E('input');f.type='file';f.accept='.json,application/json';
+f.onchange=async()=>{try{const d=JSON.parse(await f.files[0].text());if(d.app!=='virtual-pipe-organ')throw Error('not an organ registration file');
+if(d.pistons&&typeof d.pistons=='object')for(const[k,r]of Object.entries(d.pistons))if(okReg(r))PS[k]={...r,on:r.on.map(sk).filter(Boolean)};store();if(okReg(d.registration))setReg(d.registration);msg('loaded '+f.files[0].name)}catch(x){msg('could not load file: '+x.message)}};f.click()}
+// ---------- dialogs: Pro, support, help, privacy, terms
+function proUI(){const b=$('prob');b.hidden=!SHOP.buy;b.textContent=pro()?'Pro ✓':'Pro'+(SHOP.price?' · '+SHOP.price:'');$('supb').hidden=!SHOP.support;if(SHOP.support)$('supb').href=SHOP.support}
+function proDlg(why){const d=E('div');d.innerHTML=`${why?`<p><b>${why}</b> is part of Pro.</p>`:''}<p>The organ itself stays free: every stop, coupler, piston (memory level 1), MIDI and all the sound settings.
+Pro is how players support its development, and it adds tools for regular practice:</p><ul><li>Record what you play to a WAV file (16-bit stereo, up to 30 minutes)</li><li>Memory levels 2–8: eight complete sets of pistons</li><li>Save and load registration files to move your pistons between browsers or share them</li></ul>`;
+if(pro()){d.append(E('p','ok','Pro is unlocked in this browser. Thank you!'))}
+else{const by=E('a','buy','Buy Pro'+(SHOP.price?' – '+SHOP.price:''));by.href=SHOP.buy;by.target='_blank';by.rel='noopener';
+let sb='';if(SHOP.sub){sb=E('a','buy','Monthly'+(SHOP.subPrice?' – '+SHOP.subPrice:''));sb.href=SHOP.sub;sb.target='_blank';sb.rel='noopener';sb.title='Pro as a subscription; cancel any time'}
+let st='';if(SHOP.site){st=E('a','buy','Church / site licence'+(SHOP.sitePrice?' – '+SHOP.sitePrice:''));st.href=SHOP.site;st.target='_blank';st.rel='noopener';st.title='one purchase for a church, school or ensemble: use the code on all of its devices'}
+const i=E('input');i.placeholder='unlock code from your receipt';i.setAttribute('aria-label','unlock code');const go=E('button','','Unlock'),er=E('p','err');
+go.onclick=async()=>{er.textContent=await unlock(i.value);if(!er.textContent){d.innerHTML='<p class=ok>Pro unlocked. Thank you for supporting the organ!</p>'}};d.append(by,' ',sb,' ',st,E('p','','Already bought it? Enter your code:'),i,go,er)}
+if(SHOP.portal){const pm=E('p');const a=E('a','','Manage or cancel a subscription');a.href=SHOP.portal;a.target='_blank';a.rel='noopener';pm.append(a);d.append(pm)}
+dlg('Virtual Pipe Organ Pro',d)}
+const HELP=`<h4>Playing</h4><ul><li>Click or touch keys; many fingers at once work on touch screens. <b>Latch</b> makes each click toggle a key, for chords of any size.</li>
+<li>Computer keyboard: the lower two rows (<kbd>Z</kbd> <kbd>S</kbd> <kbd>X</kbd> <kbd>D</kbd> …) play the pedals; the upper two rows (<kbd>Q</kbd> <kbd>2</kbd> <kbd>W</kbd> <kbd>3</kbd> …) play the selected manual (gold outline; click a manual’s cheek or use <kbd>PgUp</kbd>/<kbd>PgDn</kbd>).</li>
+<li><kbd>↑</kbd>/<kbd>↓</kbd> octave · <kbd>←</kbd>/<kbd>→</kbd> swell shoe · <kbd>Space</kbd> sustain · <kbd>[</kbd>/<kbd>]</kbd> previous/next general · <kbd>Esc</kbd> panic.</li>
+<li>Most computer keyboards only report a few letter keys at once (often 3–6, depending on which keys); that limit is in the keyboard hardware. For big chords use Latch, a touch screen or a MIDI keyboard.</li></ul>
+<h4>Stops and pistons</h4><ul><li>Pull a drawknob to draw a stop; it lights gold. Violet means the crescendo pedal or sforzando drew it.</li>
+<li>Thumb pistons under each manual: 1–6 and F recall that division, 0 cancels it. Generals 1–9 and T sit under the Great and as toe studs; GC cancels everything.</li>
+<li>To set a piston, press <b>SET</b> and then the piston. Settings are stored in this browser only.</li></ul>
+<h4>MIDI</h4><ul><li>Settings → Enable MIDI. With one keyboard, choose “one keyboard” in MIDI keyboards. By channel: 1 Pedal, 2 Choir, 3 Great, 4 Swell, 5 Solo, 6 Echo. CC11 expression, CC64 sustain, CC7 volume, program change 0–9 = generals.</li></ul>
+<h4>Sound</h4><ul><li>All sound is synthesised in your browser and modelled on real pipe behaviour: each pipe has its own tuning and speech, the wind sways and flutes breathe. It is not made from recordings of the named organs. Use headphones or good speakers for 16′ and 32′ stops.</li>
+<li>No sound on iPhone or iPad? Tap a key once (on older iOS, also turn off the silent switch).</li></ul>`;
+const PRIV=`<p>This page has no accounts, no adverts, no cookies and no analytics.</p><ul><li>Your settings, pistons and Pro unlock are saved only in this browser (localStorage). Clear the site data to remove them.</li>
+<li>Audio, MIDI and recordings stay on your device. Recordings are created locally and downloaded straight to your computer.</li>
+<li>The page is hosted on GitHub Pages; GitHub may log visitors’ IP addresses for security, as described in GitHub’s privacy statement.</li>
+<li>If you follow a Support or Buy link, that provider’s own privacy policy applies to the payment.</li></ul>`;
+const TERMS=`<ul><li>The organ is provided as is, without warranty of any kind.</li><li>Sounds are synthesised approximations. Organ and builder names describe the style being modelled; they are not recordings and imply no endorsement.</li>
+<li>What you play and record is yours, including for commercial use.</li>${SHOP.buy?'<li>Pro is sold through Stripe, which is the merchant of record and handles payment, tax and receipts; its refund terms apply. Pro is a one-time purchase, or a monthly subscription you can cancel any time from the “Manage or cancel a subscription” link. A Pro unlock is stored in the browser where you enter the code.</li>':''}</ul>`;
+$('helpb').onclick=()=>dlg('How to play',HELP);$('privl').onclick=e=>{e.preventDefault();dlg('Privacy',PRIV)};$('terml').onclick=e=>{e.preventDefault();dlg('Terms of use',TERMS)};
+$('prob').onclick=()=>proDlg();$('recb').onclick=recToggle;$('expb').onclick=exportFile;$('impb').onclick=importFile;
+$('lvlm').onclick=()=>setLvl(LVL-1);$('lvlp').onclick=()=>setLvl(LVL+1);proUI();
+// ---------- start overlay, audio unlock, wake lock
+let WL=null;const wake=async()=>{try{if('wakeLock' in navigator&&!document.hidden)WL=await navigator.wakeLock.request('screen')}catch(e){}};
+function hideStart(){const s=$('start');if(s&&!s.hidden){s.hidden=true;wake();if(SET.midi&&navigator.permissions)navigator.permissions.query({name:'midi'}).then(p=>p.state=='granted'&&midiOn(0)).catch(()=>{})}}
+function fail(m){const s=$('start');s.hidden=false;$('startm').textContent=m;$('go').hidden=true;console.error(m)}
+$('go').onclick=()=>{init();if(A)A.resume().then(hideStart,()=>{});hideStart()};
+// any gesture also unlocks audio (iOS needs touchend/click, not pointerdown), and 'interrupted' contexts are resumed
+for(const ev of ['pointerup','touchend','keydown','click'])addEventListener(ev,()=>{if(A&&A.state!='running')A.resume().catch(()=>{})},{capture:true,passive:true});
+document.addEventListener('mousedown',e=>{if(e.target.closest&&e.target.closest('button,.k'))e.preventDefault()}); // mouse clicks don't steal focus, so Space stays "sustain"
+// ---------- computer keyboard
 const LOW='KeyZ KeyS KeyX KeyD KeyC KeyV KeyG KeyB KeyH KeyN KeyJ KeyM Comma KeyL Period Semicolon Slash'.split(' '),
-UP='KeyQ Digit2 KeyW Digit3 KeyE KeyR Digit5 KeyT Digit6 KeyY Digit7 KeyU KeyI Digit9 KeyO Digit0 KeyP'.split(' '),KD={},MANS=DIV.filter(d=>d.id!='P');
-onkeydown=e=>{if(/INPUT|SELECT|TEXTAREA/.test(e.target.tagName)||e.ctrlKey||e.metaKey||e.altKey)return;const c=e.code;
+UP='KeyQ Digit2 KeyW Digit3 KeyE KeyR Digit5 KeyT Digit6 KeyY Digit7 KeyU KeyI Digit9 KeyO Digit0 KeyP'.split(' '),MANS=DIV.filter(d=>d.id!='P');
+const kn=c=>({Comma:',',Period:'.',Semicolon:';',Slash:'/'})[c]||c.replace(/^(Key|Digit)/,'');
+function legend(){document.querySelectorAll('.kb [data-l]').forEach(k=>delete k.dataset.l);if(!SET.letters)return;
+UP.forEach((c,i)=>{const k=ACT.keys[60+12*OCT+i];k&&(k.dataset.l=kn(c))});LOW.forEach((c,i)=>{const k=DV.P.keys[36+i];k&&(k.dataset.l=kn(c))});$('octd').textContent=(OCT>0?'+':'')+OCT}
+const typing=t=>t.isContentEditable||t.tagName=='TEXTAREA'||(t.tagName=='INPUT'&&!/^(range|checkbox|radio|button)$/.test(t.type));
+const kfocus=t=>t&&t.matches&&t.matches(':focus-visible')&&(t.tagName=='BUTTON'||t.tagName=='A'||t.tagName=='SUMMARY'||t.getAttribute('role')=='button');
+onkeydown=e=>{const c=e.code,tg=e.target;if(typing(tg)||e.ctrlKey||e.altKey)return;
+if(e.metaKey){allUp();return} // macOS drops keyups while Cmd is held: let go of computer-key notes now rather than leave them stuck
+if((tg.tagName=='SELECT'||tg.type=='range')&&/^(Arrow|Page|Home|End)/.test(c))return;
+if((c=='Enter'||c=='Space')&&kfocus(tg)){if(tg.getAttribute('role')=='button'){e.preventDefault();e.repeat||tg.click()}return} // keyboard users operate the focused control
 if(c=='Space'){e.preventDefault();setSus(1);return}
-if(c=='ArrowLeft'||c=='ArrowRight'){e.preventDefault();setExp(ACT.box?ACT:DV[shoe],(ACT.box?ACT:DV[shoe]).exp+(c=='ArrowLeft'?-.05:.05));return}
-if(e.repeat)return;
-if(c=='ArrowUp'||c=='ArrowDown'){e.preventDefault();OCT=Math.max(-3,Math.min(2,OCT+(c=='ArrowUp'?1:-1)));$('now').textContent='keyboard octave '+OCT;return}
+if(c=='ArrowLeft'||c=='ArrowRight'){e.preventDefault();const D=ACT.box?ACT:DV[shoe];setExp(D,D.exp+(c=='ArrowLeft'?-.05:.05));msg(D.name+' shoe '+Math.round(D.exp*100)+'%');return}
+if(e.repeat){if(LOW.includes(c)||UP.includes(c))e.preventDefault();return}
+if(c=='ArrowUp'||c=='ArrowDown'){e.preventDefault();OCT=Math.max(-2,Math.min(2,OCT+(c=='ArrowUp'?1:-1)));msg('computer keyboard octave '+(OCT>0?'+':'')+OCT);legend();return}
 if(c=='PageUp'||c=='PageDown'){e.preventDefault();setAct(MANS[(MANS.indexOf(ACT)+(c=='PageUp'?1:MANS.length-1))%MANS.length]);return}
-if(c=='Escape'){halt();return}
+if(c=='BracketRight'||c=='BracketLeft'){e.preventDefault();gen(c=='BracketRight'?Math.min(9,GSEQ+1):Math.max(0,GSEQ-1));return}
+if(c=='Escape'){if(!document.querySelector('dialog[open]'))halt();return} // Esc closing a dialog must not also cut held notes
 let i=LOW.indexOf(c),S,n;if(i>=0){S=DV.P;n=36+i}else if((i=UP.indexOf(c))>=0){S=ACT;n=60+12*OCT+i}else return;
-e.preventDefault();KD[c]=[S,n];press(S,n)};
-onkeyup=e=>{if(e.code=='Space'){setSus(0);return}const k=KD[e.code];if(k){release(k[0],k[1]);delete KD[e.code]}};
-setInterval(()=>{$('st').textContent=`${V.size} keys held · ${nosc} oscillators · ${$('st').dataset.n||0} stops sounding`},400);
-setReg({...lvlReg(3),cp:['G>P']});
+e.preventDefault();KD[c]=[S,n];press(S,n,'k'+c)};
+onkeyup=e=>{if(e.code=='Space'){if(kfocus(e.target))return;e.preventDefault();setSus(0);return}const k=KD[e.code];if(k){release(k[0],k[1],'k'+e.code);delete KD[e.code]}};
+// focus lost (tab switch, alt-tab, dialog): keyup/pointerup never arrive, so let go of everything physically held
+const allUp=()=>{for(const c in KD)delete KD[c];relWhere(h=>h[0]=='k'||h[0]=='p');setSus(0)};
+addEventListener('blur',allUp);document.addEventListener('visibilitychange',()=>{if(document.hidden)allUp();else{wake();if(A&&A.state!='running')A.resume().catch(()=>{})}});
+setInterval(()=>{$('st').textContent=`${KS.size} keys · ${P.size} pipes · ${nosc} voices · ${$('st').dataset.n||0} stops${LOAD<.97&&nosc>60?' · audio busy: thinning ensemble':''}`},400);
+READY=1;setAct(DV.G);setReg(okReg(SET.reg)?SET.reg:(preset(PRE['Diapason chorus']),getReg()));legend();
+
+// offline/installable: register the service worker on http(s) only (not file:// or ?reset dev runs)
+try{if('serviceWorker'in navigator&&/^https?:$/.test(location.protocol)&&!/[?&]reset(&|$)/.test(location.search))navigator.serviceWorker.register('sw.js').catch(()=>{})}catch(e){}
 </script>
 </body></html>
