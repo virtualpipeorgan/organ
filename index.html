@@ -589,6 +589,7 @@ site:'https://buy.stripe.com/eVq8wPcUVejH757fZ91Fe03',     // church / site lice
 sitePrice:'US$39',
 sub:'https://buy.stripe.com/eVq28r9IJb7vexz6oz1Fe04',      // Pro subscription (same unlock code)
 subPrice:'US$3/month',
+licence:'',  // per-buyer unlock (worker/, P10): the deployed worker's URL. Empty = off; the shared code still works.
 portal:'https://billing.stripe.com/p/login/00wbJ11cd7Vj613eV51Fe00', // subscribers cancel / update card here
 // SHA-256 of unlock codes (make one with dev/newcode.py). Rotate each major release; keep old hashes so earlier buyers stay unlocked.
 codes:['d94e42e9e70f52f6ba83446f689e91b32f81e66e8238d71ac3a6ca6019e5b7c0']};
@@ -648,7 +649,13 @@ const PRE={'Diapason chorus':{G:['Open Diapason I 8′','Principal 4′'],W:['Ge
 'Everything':{all:1}};
 // ---------- Pro and support
 let PRO=ls.get(PROK)||'';
-const pro=()=>!SHOP.buy||(!!PRO&&(!SHOP.codes.length||SHOP.codes.includes(PRO)));
+let PROL=null;try{PROL=JSON.parse(ls.get('organ-pro-licence')||'null')}catch(e){}
+const pro=()=>!SHOP.buy||(!!PROL&&!!SHOP.licence)||(!!PRO&&(!SHOP.codes.length||SHOP.codes.includes(PRO)));
+// per-buyer unlock: a Payment Link that redirects to ?session_id=cs_... is checked by the worker, which returns a signed token for that purchase
+async function licenceFromUrl(){const m=/[?&]session_id=(cs_(?:live|test)_[A-Za-z0-9]+)/.exec(location.search);if(!m||!SHOP.licence)return;
+ history.replaceState(null,'',location.pathname+location.hash);
+ try{const r=await (await fetch(SHOP.licence.replace(/\/$/,'')+'/unlock?session_id='+m[1])).json();if(r.ok&&r.token){PROL={id:m[1],token:r.token};ls.set('organ-pro-licence',JSON.stringify(PROL));proUI();msg('Pro unlocked for this purchase. Thank you!')}else msg('That purchase could not be confirmed yet. Reload in a minute, or use the code on your receipt.')}
+ catch(e){msg('Could not reach the licence check. Use the code on your receipt instead.')}}
 const sha=async t=>[...new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(t)))].map(b=>b.toString(16).padStart(2,'0')).join('');
 async function unlock(code){code=(code||'').trim();if(code.length<6)return 'Please enter the code from your receipt.';
 if(!crypto.subtle)return 'Unlocking needs a secure (https) page.';const h=await sha(code);
@@ -967,7 +974,7 @@ onkeyup=e=>{if(e.code=='Space'){if(kfocus(e.target))return;e.preventDefault();se
 const allUp=()=>{for(const c in KD)delete KD[c];relWhere(h=>h[0]=='k'||h[0]=='p');setSus(0)};
 addEventListener('blur',allUp);document.addEventListener('visibilitychange',()=>{if(document.hidden)allUp();else{wake();if(A&&A.state!='running')A.resume().catch(()=>{})}});
 setInterval(()=>{$('st').textContent=`${KS.size} keys · ${P.size} pipes · ${nosc} voices · ${$('st').dataset.n||0} stops${LOAD<.97&&nosc>60?' · audio busy: thinning ensemble':''}`},400);
-READY=1;setAct(DV.G);{const hr=decReg(location.hash);setReg(hr||(okReg(SET.reg)?SET.reg:(preset(PRE['Diapason chorus']),getReg())));hr&&msg('registration loaded from a shared link')}legend();i18n(SET.lang||langAuto());
+READY=1;licenceFromUrl();setAct(DV.G);{const hr=decReg(location.hash);setReg(hr||(okReg(SET.reg)?SET.reg:(preset(PRE['Diapason chorus']),getReg())));hr&&msg('registration loaded from a shared link')}legend();i18n(SET.lang||langAuto());
 
 // offline/installable: register the service worker on http(s) only (not file:// or ?reset dev runs)
 try{if('serviceWorker'in navigator&&/^https?:$/.test(location.protocol)&&!/[?&]reset(&|$)/.test(location.search))navigator.serviceWorker.register('sw.js').catch(()=>{})}catch(e){}
