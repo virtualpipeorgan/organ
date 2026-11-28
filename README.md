@@ -19,7 +19,7 @@ Pick a hymn on the music desk:
 
 You can play the tunes on any manual or on MIDI. On phones the keyboard follows the melody, and all manuals slide together from the grip rail.
 
-The melodies are public-domain tunes taken from the MusicXML scores on [Hymnary.org](https://hymnary.org/). Only the melody is used, not any hymnal's harmonisation.
+The melodies are public-domain tunes taken from the MusicXML scores on [Hymnary.org](https://hymnary.org/) and the ABC scores of the [Open Hymnal](https://openhymnal.org/), each of which states that it is public domain. Only the melody is used, not any hymnal's harmonisation.
 
 ## Pro and payments (owner)
 - Pro is sold through Stripe Payment Links, with Stripe as merchant of record. The products are Pro at US$12 once, Pro at US$3 a month, and a church licence at US$39.
