@@ -673,7 +673,7 @@ const mgain=()=>MUTE?0:+VS.value/100;
 VS=ctl(bar,'Volume ','0','100',1,'vol',60,v=>M&&M.gain.setTargetAtTime(MUTE?0:v/100,A.currentTime,.02));VS.id='vol';
 {const l=E('label','ct'),c=E('input');c.type='checkbox';c.id='mute';c.checked=MUTE;c.setAttribute('aria-label','Mute all sound');
 c.onchange=()=>{MUTE=c.checked;SET.mute=MUTE?1:0;saveSoon();M&&M.gain.setTargetAtTime(mgain(),A.currentTime,.02)};l.append(c,' Mute');l.title='silence the organ without changing the volume';bar.append(l)}
-sel(bar,'Room ',Object.keys(ROOMS).map(k=>[k,k]),'room','Church',v=>{ROOM=v;const[r,w]=ROOMS[v]||ROOMS.Church;if(RS&&(+RS.value!==r||+WS.value!==w)){RS.value=r;WS.value=w;RS.oninput();WS.oninput()}});
+sel(bar,'Room ',Object.keys(ROOMS).map(k=>[k,k]),'room',matchMedia('(pointer:coarse)').matches?'Chapel':'Church',v=>{ROOM=v;const[r,w]=ROOMS[v]||ROOMS.Church;if(RS&&(+RS.value!==r||+WS.value!==w)){RS.value=r;WS.value=w;RS.oninput();WS.oninput()}});
 RS=ctl(bar,'Reverb ',.3,9,.1,'rt',ROOMS[ROOM][0],v=>{RT=v;clearTimeout(irT);irT=setTimeout(newVerb,250)},v=>v+' s');
 WS=ctl(bar,'Wet ',0,1.5,.05,'wet',ROOMS[ROOM][1],v=>{RM=v;WG&&WG.gain.setTargetAtTime(v,A.currentTime,.05)});
 ctl(bar,'Pipe character ',0,1,.05,'char',.6,v=>{setChar(v);DIV.forEach(D=>D.dirty=1)},v=>Math.round(v*100)+'%','0 = perfectly steady and in tune; higher adds each pipe’s own tuning, wind sway, breath and speech');
@@ -843,7 +843,11 @@ btn(q,'▶ Famous stops',()=>tour(FAM),'hear each stop from a famous organ on it
  const sp=E('select');sp.id='hysp';sp.setAttribute('aria-label','hymn speed');[['0.5','50%'],['0.75','75%'],['1','100%']].forEach(([v,l])=>sp.append(new Option(l,v)));sp.value='0.75';sp.title='tempo for Listen and Play';sp.onchange=()=>sp.blur();
  if(HYMNS.length){q.append(hs,sp);btn(q,'▶ Listen',()=>hyStart('listen'),'hear the hymn tune on the Great; click again to stop').id='hyl';
   btn(q,'Learn',()=>hyStart('learn'),'each note falls onto its key and waits for you; click again to stop').id='hyle';
-  btn(q,'★ Play',()=>hyStart('play'),'play in time: every note is scored Perfect, Good or Miss and you earn up to 3 stars').id='hyp';hs.value=hyToday();hs.title='☀ marks the hymn of the day';hyLabels()}}
+  btn(q,'★ Play',()=>hyStart('play'),'play in time: every note is scored Perfect, Good or Miss and you earn up to 3 stars').id='hyp';hs.value=hyToday();hs.title='☀ marks the hymn of the day';hyLabels();
+  // class links (teach a hymn without accounts): #h=slug or #h=slug1,slug2 limits the list to those tunes and opens the first one
+  {const m=/^#h=([\w,.'-]+)$/.exec(location.hash),key=t=>t.src.split(/[\/#]/).pop();if(m){const want=m[1].split(',');const keep=HYMNS.map((t,i)=>want.includes(key(t))?i:-1).filter(i=>i>=0);
+   if(keep.length){[...hs.options].forEach(o=>{if(!keep.includes(+o.value))o.remove()});hs.value=keep[0];setTimeout(()=>msg(`class list from your teacher: ${keep.length} hymn${keep.length>1?'s':''}. Press Learn to start`),0)}}
+   btn(q,'Class link',async()=>{const u=location.origin+location.pathname+'#h='+key(HYMNS[hs.value]);try{await navigator.clipboard.writeText(u);msg('link to this hymn copied: students open it straight into the trainer')}catch(e){prompt('Copy this link:',u)}},'copy a link that opens this hymn in the trainer, for students or a choir; add more tunes by joining their names with commas after #h=')}}}
 btn(q,'Latch',e=>{LATCH^=1;tog(e.currentTarget,LATCH);if(!LATCH)relWhere(h=>h=='L')},'click or tap keys to toggle them on and off, so chords of any size can be built with a mouse or one finger');
 btn(q,'Panic',()=>halt(),'silence everything (Esc)','danger');
 const f=E('input');f.type='search';f.placeholder='find a stop…';f.setAttribute('aria-label','find a stop');f.oninput=()=>{const t=f.value.trim().toLowerCase();let first;
